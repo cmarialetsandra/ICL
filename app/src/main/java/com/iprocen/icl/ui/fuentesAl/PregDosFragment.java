@@ -1,6 +1,7 @@
 package com.iprocen.icl.ui.fuentesAl;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.iprocen.icl.R;
 
@@ -35,9 +37,18 @@ public class PregDosFragment extends Fragment {
     private ArrayList<String> listFuentesA = new ArrayList<>();
     AdapterPregDos adapterPregDos;
 
+    String fase;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_fuentes_al, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Bundle bundle = getArguments();
+        fase = bundle.getString("fase");
+        Log.e("fase", fase);
     }
 
     @Override
@@ -65,7 +76,32 @@ public class PregDosFragment extends Fragment {
     }
 
     private void listarDatos(){
-        dbRe.child("FuentesAl").addValueEventListener(new ValueEventListener() {
+        Query q = dbRe.child("FuentesAl").orderByChild("fase").equalTo(fase);
+        q.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()){
+                    FuentesAl fuentesAl = objSnapshot.getValue(FuentesAl.class);
+                    listFuentesA.add(fuentesAl.getS_tension());
+                    Log.e("s_tension", fuentesAl.getS_tension());
+                }
+
+                //Eliminando elementos repetidos de la lista
+                Set<String> hashSet = new HashSet<String>(listFuentesA);
+                listFuentesA.clear();
+                listFuentesA.addAll(hashSet);
+
+                adapterPregDos.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        /*dbRe.child("FuentesAl").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listFuentesA.removeAll(listFuentesA);
@@ -86,7 +122,7 @@ public class PregDosFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
     }
 
 }

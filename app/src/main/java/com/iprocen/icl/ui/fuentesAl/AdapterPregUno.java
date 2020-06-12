@@ -1,6 +1,7 @@
 package com.iprocen.icl.ui.fuentesAl;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,12 +36,15 @@ public class AdapterPregUno extends RecyclerView.Adapter<AdapterPregUno.PregUnoV
 
     @Override
     public void onBindViewHolder(@NonNull final PregUnoViewHolder holder, int position) {
-        String opc = fuentesAlList.get(position);
+        final String opc = fuentesAlList.get(position);
         holder.txtOpc.setText(opc);
         holder.txtOpc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("fase", opc);
                 PregDosFragment fragment = new PregDosFragment();
+                fragment.setArguments(bundle);
                 FragmentTransaction transaction = ((AppCompatActivity) holder.context).getSupportFragmentManager().beginTransaction()
                         .replace(R.id.nav_host_fragment, fragment).addToBackStack(null);
                 transaction.commit();

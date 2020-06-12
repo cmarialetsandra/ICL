@@ -1,7 +1,5 @@
 package com.iprocen.icl.ui.fuentesAl;
 
-import androidx.annotation.NonNull;
-
 public class FuentesAl {
     private String id;
     private String fase;
