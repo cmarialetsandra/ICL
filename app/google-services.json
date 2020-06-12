@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "584014476053",
+    "firebase_url": "https://icl-app.firebaseio.com",
+    "project_id": "icl-app",
+    "storage_bucket": "icl-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584014476053:android:18c33c0bc06bfac9d7ef1c",
+        "android_client_info": {
+          "package_name": "com.iprocen.icl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584014476053-rjlb69aj9q4m9ccnln00nglv25q6giq7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iprocen.icl",
+            "certificate_hash": "01453914d699dfbf692d6fd472336d56b5b090f4"
+          }
+        },
+        {
+          "client_id": "584014476053-6tggjl227rmch36dvpv4tfspfa8b3dlb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbKrmYN9nDx5xv9i6hRc1plb5d1b-Jtvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584014476053-6tggjl227rmch36dvpv4tfspfa8b3dlb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
