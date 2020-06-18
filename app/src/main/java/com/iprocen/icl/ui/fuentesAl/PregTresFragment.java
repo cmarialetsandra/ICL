@@ -21,8 +21,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.iprocen.icl.R;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class PregTresFragment extends Fragment {
 
@@ -31,7 +29,9 @@ public class PregTresFragment extends Fragment {
     TextView txt_preg;
     RecyclerView recyclerView;
 
-    private ArrayList<String> listFuentesA = new ArrayList<>();
+    private ArrayList<FuentesAl> listFuentesA = new ArrayList<>();
+    private ArrayList<FuentesAl> listAdapter = new ArrayList<>();
+
     AdapterPregTres adapter;
 
     String fase, s_tension;
@@ -39,6 +39,13 @@ public class PregTresFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_fuentes_al, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Bundle bundle = getArguments();
+        fase = bundle.getString("fase");
+        s_tension = bundle.getString("s_tension");
     }
 
     @Override
@@ -53,15 +60,15 @@ public class PregTresFragment extends Fragment {
 
         mFirestore = FirebaseFirestore.getInstance();
 
-        adapter = new AdapterPregTres(listFuentesA);
+        adapter = new AdapterPregTres(listAdapter);
         recyclerView.setAdapter(adapter);
 
         listarDatos();
     }
 
     private void listarDatos(){
-        mFirestore.collection("FuentesAl").whereEqualTo("fase", "Monofásico")
-                .whereEqualTo("s_tension", "12 V DC").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        mFirestore.collection("FuentesAl").whereEqualTo("fase", fase)
+                .whereEqualTo("s_tension", s_tension).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot documentSnapshots, @Nullable FirebaseFirestoreException e) {
                 if (e != null){
@@ -70,16 +77,31 @@ public class PregTresFragment extends Fragment {
                 for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
                     if (doc.getType() == DocumentChange.Type.ADDED){
                         FuentesAl fuentesAl = doc.getDocument().toObject(FuentesAl.class);
-                        listFuentesA.add(fuentesAl.getS_corriente());
+                        listFuentesA.add(fuentesAl);
                     }
                 }
 
-                Set<String> hashSet = new HashSet<>(listFuentesA);
-                listFuentesA.clear();
-                listFuentesA.addAll(hashSet);
+                for (FuentesAl f1: listFuentesA){
+                    for (FuentesAl f2: listFuentesA){
+                        if (f1.getS_corriente().equals(f2.getS_corriente())){
+                            if (agregar(f1.getS_corriente())){
+                                listAdapter.add(f1);
+                            }
+                        }
+                    }
+                }
 
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    private boolean agregar(String valor){
+        for (FuentesAl fuentesAl: listAdapter){
+            if (fuentesAl.getS_corriente().equals(valor)){
+                return false;
+            }
+        }
+        return true;
     }
 }

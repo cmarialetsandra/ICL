@@ -21,8 +21,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.iprocen.icl.R;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class PregDosFragment extends Fragment {
 
@@ -31,7 +29,9 @@ public class PregDosFragment extends Fragment {
     TextView txt_preg;
     RecyclerView recyclerView;
 
-    private ArrayList<String> listFuentesA = new ArrayList<>();
+    private ArrayList<FuentesAl> listFuentesA = new ArrayList<>();
+    private ArrayList<FuentesAl> listAdapter = new ArrayList<>();
+
     AdapterPregDos adapter;
 
     String fase;
@@ -45,7 +45,6 @@ public class PregDosFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
         fase = bundle.getString("fase");
-        Log.e("fase", fase);
     }
 
     @Override
@@ -60,7 +59,7 @@ public class PregDosFragment extends Fragment {
 
         mFirestore = FirebaseFirestore.getInstance();
 
-        adapter = new AdapterPregDos(listFuentesA);
+        adapter = new AdapterPregDos(listAdapter);
         recyclerView.setAdapter(adapter);
 
         listarDatos();
@@ -77,17 +76,31 @@ public class PregDosFragment extends Fragment {
                 for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
                     if (doc.getType() == DocumentChange.Type.ADDED){
                         FuentesAl fuentesAl = doc.getDocument().toObject(FuentesAl.class);
-                        listFuentesA.add(fuentesAl.getS_tension());
+                        listFuentesA.add(fuentesAl);
                     }
                 }
 
-                Set<String> hashSet = new HashSet<>(listFuentesA);
-                listFuentesA.clear();
-                listFuentesA.addAll(hashSet);
+                for (FuentesAl f1: listFuentesA){
+                    for (FuentesAl f2: listFuentesA){
+                        if (f1.getS_tension().equals(f2.getS_tension())){
+                            if (agregar(f1.getS_tension())){
+                                listAdapter.add(f1);
+                            }
+                        }
+                    }
+                }
 
                 adapter.notifyDataSetChanged();
             }
         });
     }
 
+    private boolean agregar(String valor){
+        for (FuentesAl fuentesAl: listAdapter){
+            if (fuentesAl.getS_tension().equals(valor)){
+                return false;
+            }
+        }
+        return true;
+    }
 }

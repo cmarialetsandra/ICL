@@ -21,8 +21,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.iprocen.icl.R;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class FuentesAlFragment extends Fragment {
 
@@ -31,7 +29,8 @@ public class FuentesAlFragment extends Fragment {
     TextView txt_preg;
     RecyclerView recyclerView;
 
-    private ArrayList<String> listFuentesA = new ArrayList<>();
+    private ArrayList<FuentesAl> listFuentesA = new ArrayList<>();
+    private ArrayList<FuentesAl> listAdapter = new ArrayList<>();
     AdapterPregUno adapter;
 
     @Override
@@ -53,7 +52,7 @@ public class FuentesAlFragment extends Fragment {
 
         mFirestore = FirebaseFirestore.getInstance();
 
-        adapter = new AdapterPregUno(listFuentesA);
+        adapter = new AdapterPregUno(listAdapter);
         recyclerView.setAdapter(adapter);
 
         listarDatos();
@@ -71,17 +70,32 @@ public class FuentesAlFragment extends Fragment {
                for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
                    if (doc.getType() == DocumentChange.Type.ADDED){
                        FuentesAl fuentesAl = doc.getDocument().toObject(FuentesAl.class);
-                       listFuentesA.add(fuentesAl.getFase());
+                       listFuentesA.add(fuentesAl);
                    }
                }
 
-                Set<String> hashSet = new HashSet<>(listFuentesA);
-                listFuentesA.clear();
-                listFuentesA.addAll(hashSet);
+               for (FuentesAl f1: listFuentesA){
+                   for (FuentesAl f2: listFuentesA){
+                       if (f1.getFase().equals(f2.getFase())){
+                            if (agregar(f1.getFase())){
+                                listAdapter.add(f1);
+                            }
+                       }
+                   }
+               }
 
                 adapter.notifyDataSetChanged();
+
             }
         });
     }
 
+    private boolean agregar(String valor){
+        for (FuentesAl fuentesAl: listAdapter){
+            if (fuentesAl.getFase().equals(valor)){
+                return false;
+            }
+        }
+        return true;
+    }
 }

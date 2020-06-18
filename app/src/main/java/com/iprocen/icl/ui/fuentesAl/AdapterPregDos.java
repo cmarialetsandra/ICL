@@ -1,6 +1,7 @@
 package com.iprocen.icl.ui.fuentesAl;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +18,9 @@ import java.util.List;
 
 public class AdapterPregDos extends RecyclerView.Adapter<AdapterPregDos.PregDosViewHolder>{
 
-    List<String> fuentesAlList;
+    List<FuentesAl> fuentesAlList;
 
-    public AdapterPregDos(List<String> fuentesAlList) {
+    public AdapterPregDos(List<FuentesAl> fuentesAlList) {
         this.fuentesAlList = fuentesAlList;
     }
 
@@ -33,12 +34,16 @@ public class AdapterPregDos extends RecyclerView.Adapter<AdapterPregDos.PregDosV
 
     @Override
     public void onBindViewHolder(@NonNull final PregDosViewHolder holder, int position) {
-        String opc = fuentesAlList.get(position);
-        holder.txtOpc.setText(opc);
+        final FuentesAl opc = fuentesAlList.get(position);
+        holder.txtOpc.setText(opc.getS_tension());
         holder.txtOpc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("fase", opc.getFase());
+                bundle.putString("s_tension", opc.getS_tension());
                 PregTresFragment fragment = new PregTresFragment();
+                fragment.setArguments(bundle);
                 FragmentTransaction transaction = ((AppCompatActivity) holder.context).getSupportFragmentManager().beginTransaction()
                         .replace(R.id.nav_host_fragment, fragment).addToBackStack(null);
                 transaction.commit();

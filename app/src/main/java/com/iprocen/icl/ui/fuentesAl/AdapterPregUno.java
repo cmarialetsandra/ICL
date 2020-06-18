@@ -2,12 +2,10 @@ package com.iprocen.icl.ui.fuentesAl;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,9 +18,9 @@ import java.util.List;
 
 public class AdapterPregUno extends RecyclerView.Adapter<AdapterPregUno.PregUnoViewHolder>{
 
-    List<String> fuentesAlList;
+    List<FuentesAl> fuentesAlList;
 
-    public AdapterPregUno(List<String> fuentesAlList) {
+    public AdapterPregUno(List<FuentesAl> fuentesAlList) {
         this.fuentesAlList = fuentesAlList;
     }
 
@@ -36,13 +34,13 @@ public class AdapterPregUno extends RecyclerView.Adapter<AdapterPregUno.PregUnoV
 
     @Override
     public void onBindViewHolder(@NonNull final PregUnoViewHolder holder, int position) {
-        final String opc = fuentesAlList.get(position);
-        holder.txtOpc.setText(opc);
+        final FuentesAl opc = fuentesAlList.get(position);
+        holder.txtOpc.setText(opc.getFase());
         holder.txtOpc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("fase", opc);
+                bundle.putString("fase", opc.getFase());
                 PregDosFragment fragment = new PregDosFragment();
                 fragment.setArguments(bundle);
                 FragmentTransaction transaction = ((AppCompatActivity) holder.context).getSupportFragmentManager().beginTransaction()

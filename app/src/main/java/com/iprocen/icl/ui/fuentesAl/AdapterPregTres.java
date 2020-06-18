@@ -15,9 +15,9 @@ import java.util.List;
 
 public class AdapterPregTres extends RecyclerView.Adapter<AdapterPregTres.PregTresViewHolder>{
 
-    List<String> fuentesAlList;
+    List<FuentesAl> fuentesAlList;
 
-    public AdapterPregTres(List<String> fuentesAlList) {
+    public AdapterPregTres(List<FuentesAl> fuentesAlList) {
         this.fuentesAlList = fuentesAlList;
     }
 
@@ -31,8 +31,8 @@ public class AdapterPregTres extends RecyclerView.Adapter<AdapterPregTres.PregTr
 
     @Override
     public void onBindViewHolder(@NonNull final PregTresViewHolder holder, int position) {
-        String opc = fuentesAlList.get(position);
-        holder.txtOpc.setText(opc);
+        FuentesAl opc = fuentesAlList.get(position);
+        holder.txtOpc.setText(opc.getS_corriente());
         /*holder.txtOpc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
