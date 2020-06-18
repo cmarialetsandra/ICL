@@ -1,25 +1,25 @@
 package com.iprocen.icl.ui.fuentesAl;
 
 public class FuentesAl {
-    private String id;
+    private Long id;
     private String fase;
     private String s_tension;
     private String s_corriente;
-    private String clasific;
+    private boolean clasific;
     private String desc;
     private String nmro_parte;
-    private String protect_sobre;
+    private boolean protect_sobre;
     private String voltaje;
     private String corriente;
 
     public FuentesAl() {
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -47,11 +47,11 @@ public class FuentesAl {
         this.s_corriente = s_corriente;
     }
 
-    public String isClasific() {
+    public Boolean isClasific() {
         return clasific;
     }
 
-    public void setClasific(String clasific) {
+    public void setClasific(Boolean clasific) {
         this.clasific = clasific;
     }
 
@@ -71,11 +71,11 @@ public class FuentesAl {
         this.nmro_parte = nmro_parte;
     }
 
-    public String isProtect_sobre() {
+    public Boolean isProtect_sobre() {
         return protect_sobre;
     }
 
-    public void setProtect_sobre(String protect_sobre) {
+    public void setProtect_sobre(Boolean protect_sobre) {
         this.protect_sobre = protect_sobre;
     }
 

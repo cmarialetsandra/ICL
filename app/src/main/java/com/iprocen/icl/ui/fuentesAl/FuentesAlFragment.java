@@ -2,23 +2,22 @@ package com.iprocen.icl.ui.fuentesAl;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.iprocen.icl.R;
 
 import java.util.ArrayList;
@@ -27,14 +26,13 @@ import java.util.Set;
 
 public class FuentesAlFragment extends Fragment {
 
-    FirebaseDatabase frDb;
-    DatabaseReference dbRe;
+    FirebaseFirestore mFirestore;
 
     TextView txt_preg;
     RecyclerView recyclerView;
 
     private ArrayList<String> listFuentesA = new ArrayList<>();
-    AdapterPregUno adapterPregUno;
+    AdapterPregUno adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,42 +51,37 @@ public class FuentesAlFragment extends Fragment {
         recyclerView = getActivity().findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        inicializarFirebase();
+        mFirestore = FirebaseFirestore.getInstance();
 
-        adapterPregUno = new AdapterPregUno(listFuentesA);
-        recyclerView.setAdapter(adapterPregUno);
+        adapter = new AdapterPregUno(listFuentesA);
+        recyclerView.setAdapter(adapter);
 
         listarDatos();
     }
 
-    private void inicializarFirebase(){
-        FirebaseApp.initializeApp(getContext());
-        frDb = FirebaseDatabase.getInstance();
-        dbRe = frDb.getReference();
-    }
-
     private void listarDatos(){
-        dbRe.child("FuentesAl").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                listFuentesA.removeAll(listFuentesA);
-                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()){
-                    FuentesAl fuentesAl = objSnapshot.getValue(FuentesAl.class);
-                    listFuentesA.add(fuentesAl.getFase());
-                }
+        mFirestore.collection("FuentesAl").addSnapshotListener(new EventListener<QuerySnapshot>() {
 
-                //Eliminando elementos repetidos de la lista
-                Set<String> hashSet = new HashSet<String>(listFuentesA);
+
+            @Override
+            public void onEvent(@Nullable QuerySnapshot documentSnapshots, @Nullable FirebaseFirestoreException e) {
+               if (e != null){
+                   Log.d("Error", e.getMessage());
+               }
+               for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
+                   if (doc.getType() == DocumentChange.Type.ADDED){
+                       FuentesAl fuentesAl = doc.getDocument().toObject(FuentesAl.class);
+                       listFuentesA.add(fuentesAl.getFase());
+                   }
+               }
+
+                Set<String> hashSet = new HashSet<>(listFuentesA);
                 listFuentesA.clear();
                 listFuentesA.addAll(hashSet);
 
-                adapterPregUno.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                adapter.notifyDataSetChanged();
             }
         });
     }
+
 }

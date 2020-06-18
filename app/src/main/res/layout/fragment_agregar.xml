@@ -10,65 +10,6 @@
         android:layout_height="match_parent"
         android:padding="12dp"
         android:orientation="vertical">
-        <EditText
-            android:id="@+id/txt_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="id"/>
-
-        <EditText
-            android:id="@+id/txt_fase"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="fase"/>
-
-        <EditText
-            android:id="@+id/txt_s_tension"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="s_tension"/>
-
-        <EditText
-            android:id="@+id/txt_s_corriente"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="s_corriente"/>
-
-        <EditText
-            android:id="@+id/txt_clasific"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="clasific"/>
-
-        <EditText
-            android:id="@+id/txt_desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="desc"/>
-
-        <EditText
-            android:id="@+id/txt_nmro_parte"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="nmro_parte"/>
-
-        <EditText
-            android:id="@+id/txt_protect_sobre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="protect_sobre"/>
-
-        <EditText
-            android:id="@+id/txt_voltaje"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="voltaje"/>
-
-        <EditText
-            android:id="@+id/txt_corriente"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="corriente"/>
 
         <Button
             android:id="@+id/btn_guardar"

@@ -1,6 +1,7 @@
 package com.iprocen.icl.ui.fuentesAl;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.iprocen.icl.R;
 
 import java.util.ArrayList;
@@ -26,14 +26,15 @@ import java.util.Set;
 
 public class PregTresFragment extends Fragment {
 
-    FirebaseDatabase frDb;
-    DatabaseReference dbRe;
+    FirebaseFirestore mFirestore;
 
     TextView txt_preg;
     RecyclerView recyclerView;
 
     private ArrayList<String> listFuentesA = new ArrayList<>();
-    AdapterPregTres adapterPregTres;
+    AdapterPregTres adapter;
+
+    String fase, s_tension;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,41 +51,34 @@ public class PregTresFragment extends Fragment {
         recyclerView = getActivity().findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        inicializarFirebase();
+        mFirestore = FirebaseFirestore.getInstance();
 
-        adapterPregTres = new AdapterPregTres(listFuentesA);
-        recyclerView.setAdapter(adapterPregTres);
+        adapter = new AdapterPregTres(listFuentesA);
+        recyclerView.setAdapter(adapter);
 
         listarDatos();
     }
 
-    private void inicializarFirebase(){
-        FirebaseApp.initializeApp(getContext());
-        frDb = FirebaseDatabase.getInstance();
-        dbRe = frDb.getReference();
-    }
-
     private void listarDatos(){
-        dbRe.child("FuentesAl").addValueEventListener(new ValueEventListener() {
+        mFirestore.collection("FuentesAl").whereEqualTo("fase", "Monofásico")
+                .whereEqualTo("s_tension", "12 V DC").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                listFuentesA.removeAll(listFuentesA);
-                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()){
-                    FuentesAl fuentesAl = objSnapshot.getValue(FuentesAl.class);
-                    listFuentesA.add(fuentesAl.getS_corriente());
+            public void onEvent(@Nullable QuerySnapshot documentSnapshots, @Nullable FirebaseFirestoreException e) {
+                if (e != null){
+                    Log.d("Error", e.getMessage());
+                }
+                for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
+                    if (doc.getType() == DocumentChange.Type.ADDED){
+                        FuentesAl fuentesAl = doc.getDocument().toObject(FuentesAl.class);
+                        listFuentesA.add(fuentesAl.getS_corriente());
+                    }
                 }
 
-                //Eliminando elementos repetidos de la lista
-                Set<String> hashSet = new HashSet<String>(listFuentesA);
+                Set<String> hashSet = new HashSet<>(listFuentesA);
                 listFuentesA.clear();
                 listFuentesA.addAll(hashSet);
 
-                adapterPregTres.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                adapter.notifyDataSetChanged();
             }
         });
     }
