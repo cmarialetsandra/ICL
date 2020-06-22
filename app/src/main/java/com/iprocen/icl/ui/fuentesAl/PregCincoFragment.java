@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,20 +22,20 @@ import com.iprocen.icl.R;
 
 import java.util.ArrayList;
 
-public class PregTresFragment extends Fragment {
+public class PregCincoFragment extends Fragment {
 
     FirebaseFirestore mFirestore;
 
     TextView txt_preg;
     RecyclerView recyclerView;
 
-    private ArrayList<FuentesAl> listFuentesA = new ArrayList<>();
     private ArrayList<FuentesAl> listAdapter = new ArrayList<>();
 
-    AdapterPregTres adapter;
+    AdapterPregCinco adapter;
 
-    String fase, s_tension;
+    String fase, s_tension, s_corriente, clasif;
 
+    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_fuentes_al, container, false);
@@ -47,6 +46,8 @@ public class PregTresFragment extends Fragment {
         Bundle bundle = getArguments();
         fase = bundle.getString("fase");
         s_tension = bundle.getString("s_tension");
+        s_corriente = bundle.getString("s_corriente");
+        clasif = bundle.getString("clasif");
     }
 
     @Override
@@ -54,14 +55,14 @@ public class PregTresFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         txt_preg = getActivity().findViewById(R.id.txt_preg);
-        txt_preg.setText(R.string.pg3fa);
+        txt_preg.setText(R.string.result);
 
         recyclerView = getActivity().findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         mFirestore = FirebaseFirestore.getInstance();
 
-        adapter = new AdapterPregTres(listAdapter);
+        adapter = new AdapterPregCinco(listAdapter);
         recyclerView.setAdapter(adapter);
 
         listarDatos();
@@ -69,7 +70,8 @@ public class PregTresFragment extends Fragment {
 
     private void listarDatos(){
         mFirestore.collection("FuentesAl").whereEqualTo("fase", fase)
-                .whereEqualTo("s_tension", s_tension).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                .whereEqualTo("s_tension", s_tension).whereEqualTo("s_corriente", s_corriente)
+                .whereEqualTo("clasific", clasif).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot documentSnapshots, @Nullable FirebaseFirestoreException e) {
                 if (e != null){
@@ -78,17 +80,7 @@ public class PregTresFragment extends Fragment {
                 for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
                     if (doc.getType() == DocumentChange.Type.ADDED){
                         FuentesAl fuentesAl = doc.getDocument().toObject(FuentesAl.class);
-                        listFuentesA.add(fuentesAl);
-                    }
-                }
-
-                for (FuentesAl f1: listFuentesA){
-                    for (FuentesAl f2: listFuentesA){
-                        if (f1.getS_corriente().equals(f2.getS_corriente())){
-                            if (agregar(f1.getS_corriente())){
-                                listAdapter.add(f1);
-                            }
-                        }
+                        listAdapter.add(fuentesAl);
                     }
                 }
 
@@ -97,12 +89,5 @@ public class PregTresFragment extends Fragment {
         });
     }
 
-    private boolean agregar(String valor){
-        for (FuentesAl fuentesAl: listAdapter){
-            if (fuentesAl.getS_corriente().equals(valor)){
-                return false;
-            }
-        }
-        return true;
-    }
+
 }

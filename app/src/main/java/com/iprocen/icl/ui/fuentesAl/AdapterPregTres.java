@@ -1,12 +1,15 @@
 package com.iprocen.icl.ui.fuentesAl;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.iprocen.icl.R;
@@ -31,17 +34,22 @@ public class AdapterPregTres extends RecyclerView.Adapter<AdapterPregTres.PregTr
 
     @Override
     public void onBindViewHolder(@NonNull final PregTresViewHolder holder, int position) {
-        FuentesAl opc = fuentesAlList.get(position);
+        final FuentesAl opc = fuentesAlList.get(position);
         holder.txtOpc.setText(opc.getS_corriente());
-        /*holder.txtOpc.setOnClickListener(new View.OnClickListener() {
+        holder.txtOpc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PregDosFragment fragment = new PregDosFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("fase", opc.getFase());
+                bundle.putString("s_tension", opc.getS_tension());
+                bundle.putString("s_corriente", opc.getS_corriente());
+                PregCuatroFragment fragment = new PregCuatroFragment();
+                fragment.setArguments(bundle);
                 FragmentTransaction transaction = ((AppCompatActivity) holder.context).getSupportFragmentManager().beginTransaction()
                         .replace(R.id.nav_host_fragment, fragment).addToBackStack(null);
                 transaction.commit();
             }
-        });*/
+        });
     }
 
     @Override

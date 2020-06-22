@@ -67,7 +67,7 @@ public class PregDosFragment extends Fragment {
 
     private void listarDatos(){
         mFirestore.collection("FuentesAl").whereEqualTo("fase", fase)
-                .whereEqualTo("protect_sobre", false).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                .whereEqualTo("protect_sobre", "No").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot documentSnapshots, @Nullable FirebaseFirestoreException e) {
                 if (e != null){

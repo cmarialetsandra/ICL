@@ -5,10 +5,10 @@ public class FuentesAl {
     private String fase;
     private String s_tension;
     private String s_corriente;
-    private boolean clasific;
+    private String clasific;
     private String desc;
     private String nmro_parte;
-    private boolean protect_sobre;
+    private String protect_sobre;
     private String voltaje;
     private String corriente;
 
@@ -47,11 +47,11 @@ public class FuentesAl {
         this.s_corriente = s_corriente;
     }
 
-    public Boolean isClasific() {
+    public String getClasific() {
         return clasific;
     }
 
-    public void setClasific(Boolean clasific) {
+    public void setClasific(String clasific) {
         this.clasific = clasific;
     }
 
@@ -71,11 +71,11 @@ public class FuentesAl {
         this.nmro_parte = nmro_parte;
     }
 
-    public Boolean isProtect_sobre() {
+    public String getProtect_sobre() {
         return protect_sobre;
     }
 
-    public void setProtect_sobre(Boolean protect_sobre) {
+    public void setProtect_sobre(String protect_sobre) {
         this.protect_sobre = protect_sobre;
     }
 

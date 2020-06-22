@@ -11,5 +11,12 @@
     <string name="pg1fa">¿Necesita una fuente de alimentación monofásica o trifásica?</string>
     <string name="pg2fa">¿Cuál es la tensión de salida de DC?</string>
     <string name="pg3fa">¿Cuál es la corriente de salida (amperios)?</string>
+    <string name="pg4fa">¿Ha considerado la proteción contra sobre tensiones?</string>
+    <string name="conClasif">La fuente de alimentación es de clasificación de Clase I, División 2</string>
+    <string name="sinClasif">La fuente de alimentación no es de clasificación de Clase I, División 2</string>
+
+    <string name="result">Resultado</string>
+    <string name="desc">Descripción</string>
+    <string name="nmro_parte">Número de parte resultante de Phoenix Contact</string>
 
 </resources>
