@@ -46,7 +46,7 @@ public class AdapterPregTres extends RecyclerView.Adapter<AdapterPregTres.PregTr
                 PregCuatroFragment fragment = new PregCuatroFragment();
                 fragment.setArguments(bundle);
                 FragmentTransaction transaction = ((AppCompatActivity) holder.context).getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.nav_host_fragment, fragment).addToBackStack(null);
+                        .replace(R.id.nav_host_fragment, fragment).disallowAddToBackStack();
                 transaction.commit();
             }
         });

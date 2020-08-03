@@ -46,7 +46,7 @@ public class AdapterPregCinco extends RecyclerView.Adapter<AdapterPregCinco.Preg
                 PregSeisFragment fragment = new PregSeisFragment();
                 fragment.setArguments(bundle);
                 FragmentTransaction transaction = ((AppCompatActivity) holder.context).getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.nav_host_fragment, fragment).addToBackStack(null);
+                        .replace(R.id.nav_host_fragment, fragment).disallowAddToBackStack();
                 transaction.commit();
             }
         });

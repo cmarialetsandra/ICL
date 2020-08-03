@@ -45,7 +45,7 @@ public class AdapterPregDos extends RecyclerView.Adapter<AdapterPregDos.PregDosV
                 PregTresFragment fragment = new PregTresFragment();
                 fragment.setArguments(bundle);
                 FragmentTransaction transaction = ((AppCompatActivity) holder.context).getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.nav_host_fragment, fragment).addToBackStack(null);
+                        .replace(R.id.nav_host_fragment, fragment).disallowAddToBackStack();
                 transaction.commit();
             }
         });

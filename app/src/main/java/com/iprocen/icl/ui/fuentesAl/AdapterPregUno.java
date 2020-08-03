@@ -44,7 +44,7 @@ public class AdapterPregUno extends RecyclerView.Adapter<AdapterPregUno.PregUnoV
                 PregDosFragment fragment = new PregDosFragment();
                 fragment.setArguments(bundle);
                 FragmentTransaction transaction = ((AppCompatActivity) holder.context).getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.nav_host_fragment, fragment).addToBackStack(null);
+                        .replace(R.id.nav_host_fragment, fragment).disallowAddToBackStack();
                 transaction.commit();
             }
         });

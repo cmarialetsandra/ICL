@@ -17,10 +17,10 @@
         android:label="@string/menu_fuentes"
         tools:layout="@layout/fragment_fuentes_al"/>
 
-    <!--<fragment
+    <fragment
         android:id="@+id/nav_agregar"
         android:name="com.iprocen.icl.Agregar"
         android:label="Agregar"
-        tools:layout="@layout/fragment_agregar" />-->
+        tools:layout="@layout/fragment_agregar" />
 
 </navigation>

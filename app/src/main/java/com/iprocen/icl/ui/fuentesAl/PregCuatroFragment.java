@@ -73,7 +73,7 @@ public class PregCuatroFragment extends Fragment {
                 PregCincoFragment fragment = new PregCincoFragment();
                 fragment.setArguments(bundle);
                 FragmentTransaction transaction = ((AppCompatActivity) getContext()).getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.nav_host_fragment, fragment).addToBackStack(null);
+                        .replace(R.id.nav_host_fragment, fragment).disallowAddToBackStack();
                 transaction.commit();
             }
         });
