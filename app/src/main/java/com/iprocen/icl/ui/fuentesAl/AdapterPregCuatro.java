@@ -29,7 +29,6 @@ public class AdapterPregCuatro extends RecyclerView.Adapter<AdapterPregCuatro.Pr
         return holder;
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull final PregCuatroViewHolder holder, int position) {
         final FuentesAl opc = fuentesAlList.get(position);

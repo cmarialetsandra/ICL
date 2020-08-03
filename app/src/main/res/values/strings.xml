@@ -14,6 +14,8 @@
     <string name="pg4fa">¿Ha considerado la proteción contra sobre tensiones?</string>
     <string name="conClasif">La fuente de alimentación es de clasificación de Clase I, División 2</string>
     <string name="sinClasif">La fuente de alimentación no es de clasificación de Clase I, División 2</string>
+    <string name="voltaje">Protección contra sobretensiones \nSeleccione el voltaje</string>
+    <string name="corriente">Corriente Nominal</string>
 
     <string name="result">Resultado</string>
     <string name="desc">Descripción</string>

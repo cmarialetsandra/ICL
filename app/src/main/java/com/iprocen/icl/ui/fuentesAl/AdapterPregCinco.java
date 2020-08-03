@@ -1,12 +1,15 @@
 package com.iprocen.icl.ui.fuentesAl;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.iprocen.icl.R;
@@ -24,7 +27,7 @@ public class AdapterPregCinco extends RecyclerView.Adapter<AdapterPregCinco.Preg
     @NonNull
     @Override
     public PregCincoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_result_1, parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler, parent,false);
         PregCincoViewHolder holder = new PregCincoViewHolder(v);
         return holder;
     }
@@ -33,8 +36,20 @@ public class AdapterPregCinco extends RecyclerView.Adapter<AdapterPregCinco.Preg
     @Override
     public void onBindViewHolder(@NonNull final PregCincoViewHolder holder, int position) {
         final FuentesAl opc = fuentesAlList.get(position);
-        holder.txtDesc.setText(opc.getDesc());
-        holder.txtNmroParte.setText(opc.getNmro_parte());
+        holder.txtOpc.setText(opc.getVoltaje());
+        holder.txtOpc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("fase", opc.getFase());
+                bundle.putString("voltaje", opc.getVoltaje());
+                PregSeisFragment fragment = new PregSeisFragment();
+                fragment.setArguments(bundle);
+                FragmentTransaction transaction = ((AppCompatActivity) holder.context).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.nav_host_fragment, fragment).addToBackStack(null);
+                transaction.commit();
+            }
+        });
     }
 
     @Override
@@ -43,14 +58,12 @@ public class AdapterPregCinco extends RecyclerView.Adapter<AdapterPregCinco.Preg
     }
 
     public static class PregCincoViewHolder extends RecyclerView.ViewHolder{
-        TextView txtDesc;
-        TextView txtNmroParte;
+        TextView txtOpc;
         Context context;
 
         public PregCincoViewHolder(@NonNull View itemView) {
             super(itemView);
-            //txtDesc = (TextView) itemView.findViewById(R.id.txt_desc);
-            //txtNmroParte = (TextView) itemView.findViewById(R.id.txt_nmro);
+            txtOpc = (TextView) itemView.findViewById(R.id.txt_opc);
             context = itemView.getContext();
         }
     }

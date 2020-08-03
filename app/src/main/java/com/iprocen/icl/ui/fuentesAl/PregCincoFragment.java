@@ -1,5 +1,6 @@
 package com.iprocen.icl.ui.fuentesAl;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,12 +30,14 @@ public class PregCincoFragment extends Fragment {
 
     TextView txt_preg;
     RecyclerView recyclerView;
+    FloatingActionButton btn_sig;
 
+    private ArrayList<FuentesAl> listFuentesA = new ArrayList<>();
     private ArrayList<FuentesAl> listAdapter = new ArrayList<>();
 
     AdapterPregCinco adapter;
 
-    String fase, s_tension, s_corriente, clasif;
+    String fase;
 
     @Nullable
     @Override
@@ -45,17 +49,18 @@ public class PregCincoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
         fase = bundle.getString("fase");
-        s_tension = bundle.getString("s_tension");
-        s_corriente = bundle.getString("s_corriente");
-        clasif = bundle.getString("clasif");
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
         txt_preg = getActivity().findViewById(R.id.txt_preg);
-        txt_preg.setText(R.string.result);
+        txt_preg.setText(R.string.voltaje);
+
+        btn_sig = getActivity().findViewById(R.id.btn_sig);
+        btn_sig.setVisibility(View.GONE);
 
         recyclerView = getActivity().findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -70,8 +75,7 @@ public class PregCincoFragment extends Fragment {
 
     private void listarDatos(){
         mFirestore.collection("FuentesAl").whereEqualTo("fase", fase)
-                .whereEqualTo("s_tension", s_tension).whereEqualTo("s_corriente", s_corriente)
-                .whereEqualTo("clasific", clasif).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                .whereEqualTo("protect_sobre", "Sí").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot documentSnapshots, @Nullable FirebaseFirestoreException e) {
                 if (e != null){
@@ -80,7 +84,17 @@ public class PregCincoFragment extends Fragment {
                 for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
                     if (doc.getType() == DocumentChange.Type.ADDED){
                         FuentesAl fuentesAl = doc.getDocument().toObject(FuentesAl.class);
-                        listAdapter.add(fuentesAl);
+                        listFuentesA.add(fuentesAl);
+                    }
+                }
+
+                for (FuentesAl f1: listFuentesA){
+                    for (FuentesAl f2: listFuentesA){
+                        if (f1.getVoltaje().equals(f2.getVoltaje())){
+                            if (agregar(f1.getVoltaje())){
+                                listAdapter.add(f1);
+                            }
+                        }
                     }
                 }
 
@@ -89,5 +103,12 @@ public class PregCincoFragment extends Fragment {
         });
     }
 
-
+    private boolean agregar(String valor){
+        for (FuentesAl fuentesAl: listAdapter){
+            if (fuentesAl.getVoltaje().equals(valor)){
+                return false;
+            }
+        }
+        return true;
+    }
 }
