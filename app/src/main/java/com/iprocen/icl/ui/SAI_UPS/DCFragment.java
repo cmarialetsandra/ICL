@@ -1,4 +1,4 @@
-package com.iprocen.icl.ui.fuentesAl;
+package com.iprocen.icl.ui.SAI_UPS;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -22,42 +22,37 @@ import com.iprocen.icl.R;
 
 import java.util.ArrayList;
 
-public class PregDosFragment extends Fragment {
+public class DCFragment extends Fragment {
 
     FirebaseFirestore mFirestore;
 
     TextView txt_preg;
     RecyclerView recyclerView;
 
-    private ArrayList<FuentesAl> listFuentesA = new ArrayList<>();
-    private ArrayList<FuentesAl> listAdapter = new ArrayList<>();
+    private ArrayList<SAI_UPS> listSAI = new ArrayList<>();
+    private ArrayList<SAI_UPS> listAdapter = new ArrayList<>();
+    UPSAdapterPregUno adapter;
 
-    AdapterPregDos adapter;
+    private int aliment = 1;
+    private String alm_energia = "No";
 
-    String fase;
-
+    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fuentes_al2, container, false);
+        View view = inflater.inflate(R.layout.fragment_ups_dc, container, false);
 
-        txt_preg = (TextView) view.findViewById(R.id.txt_pregfa2);
-        txt_preg.setText(R.string.pg2fa);
+        txt_preg = (TextView) view.findViewById(R.id.txt_preg_dc);
+        txt_preg.setText(R.string.pg1dc);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewfa2);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_dc);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mFirestore = FirebaseFirestore.getInstance();
 
-        adapter = new AdapterPregDos(listAdapter);
+        adapter = new UPSAdapterPregUno(listAdapter);
         recyclerView.setAdapter(adapter);
 
         return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Bundle bundle = getArguments();
-        fase = bundle.getString("fase");
     }
 
     @Override
@@ -68,8 +63,9 @@ public class PregDosFragment extends Fragment {
     }
 
     private void listarDatos(){
-        mFirestore.collection("FuentesAl").whereEqualTo("fase", fase)
-                .whereEqualTo("protect_sobre", "No").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        mFirestore.collection("SAI_UPS").whereEqualTo("aliment", aliment).whereEqualTo("alm_energia", alm_energia)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+
             @Override
             public void onEvent(@Nullable QuerySnapshot documentSnapshots, @Nullable FirebaseFirestoreException e) {
                 if (e != null){
@@ -77,16 +73,16 @@ public class PregDosFragment extends Fragment {
                 }
                 for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
                     if (doc.getType() == DocumentChange.Type.ADDED){
-                        FuentesAl fuentesAl = doc.getDocument().toObject(FuentesAl.class);
-                        listFuentesA.add(fuentesAl);
+                        SAI_UPS saiUps = doc.getDocument().toObject(SAI_UPS.class);
+                        listSAI.add(saiUps);
                     }
                 }
 
-                for (FuentesAl f1: listFuentesA){
-                    for (FuentesAl f2: listFuentesA){
-                        if (f1.getS_tension().equals(f2.getS_tension())){
-                            if (agregar(f1.getS_tension())){
-                                listAdapter.add(f1);
+                for (SAI_UPS s1: listSAI){
+                    for (SAI_UPS s2: listSAI){
+                        if (s1.getEntrada().equals(s2.getEntrada())){
+                            if (agregar(s1.getEntrada())){
+                                listAdapter.add(s1);
                             }
                         }
                     }
@@ -98,12 +94,11 @@ public class PregDosFragment extends Fragment {
     }
 
     private boolean agregar(String valor){
-        for (FuentesAl fuentesAl: listAdapter){
-            if (fuentesAl.getS_tension().equals(valor)){
+        for (SAI_UPS saiUps: listAdapter){
+            if (saiUps.getEntrada().equals(valor)){
                 return false;
             }
         }
         return true;
     }
-
 }

@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,7 +38,20 @@ public class PregTresFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_fuentes_al, container, false);
+        View view = inflater.inflate(R.layout.fragment_fuentes_al3, container, false);
+
+        txt_preg = (TextView) view.findViewById(R.id.txt_pregfa3);
+        txt_preg.setText(R.string.pg3fa);
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewfa3);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        mFirestore = FirebaseFirestore.getInstance();
+
+        adapter = new AdapterPregTres(listAdapter);
+        recyclerView.setAdapter(adapter);
+
+        return view;
     }
 
     @Override
@@ -52,17 +64,6 @@ public class PregTresFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        txt_preg = getActivity().findViewById(R.id.txt_preg);
-        txt_preg.setText(R.string.pg3fa);
-
-        recyclerView = getActivity().findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        mFirestore = FirebaseFirestore.getInstance();
-
-        adapter = new AdapterPregTres(listAdapter);
-        recyclerView.setAdapter(adapter);
 
         listarDatos();
     }

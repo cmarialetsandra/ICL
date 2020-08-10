@@ -1,6 +1,5 @@
-package com.iprocen.icl.ui.fuentesAl;
+package com.iprocen.icl.ui.SAI_UPS;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,33 +22,33 @@ import com.iprocen.icl.R;
 
 import java.util.ArrayList;
 
-public class PregSeisFragment extends Fragment {
+public class UPSPregCincoFragment extends Fragment {
 
     FirebaseFirestore mFirestore;
 
     TextView txt_preg;
     RecyclerView recyclerView;
 
-    private ArrayList<FuentesAl> listAdapter = new ArrayList<>();
+    private ArrayList<SAI_UPS> listAdapter = new ArrayList<>();
+    UPSAdapterPregCinco adapter;
 
-    AdapterPregSeis adapter;
-
-    String fase, voltaje;
+    private int aliment;
+    private String t_alm_energia;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fuentes_al6, container, false);
+        View view = inflater.inflate(R.layout.fragment_ups5, container, false);
 
-        txt_preg = (TextView) view.findViewById(R.id.txt_pregfa6);
+        txt_preg = (TextView) view.findViewById(R.id.txt_preg_dc5);
         txt_preg.setText(R.string.result);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewfa6);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_dc5);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mFirestore = FirebaseFirestore.getInstance();
 
-        adapter = new AdapterPregSeis(listAdapter);
+        adapter = new UPSAdapterPregCinco(listAdapter);
         recyclerView.setAdapter(adapter);
 
         return view;
@@ -58,11 +57,10 @@ public class PregSeisFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
-        fase = bundle.getString("fase");
-        voltaje = bundle.getString("voltaje");
+        aliment = bundle.getInt("aliment");
+        t_alm_energia = bundle.getString("t_alm_energia");
     }
 
-    @SuppressLint("RestrictedApi")
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -71,23 +69,24 @@ public class PregSeisFragment extends Fragment {
     }
 
     private void listarDatos(){
-        mFirestore.collection("FuentesAl").whereEqualTo("fase", fase)
-                .whereEqualTo("voltaje", voltaje).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot documentSnapshots, @Nullable FirebaseFirestoreException e) {
-                if (e != null){
-                    Log.d("Error", e.getMessage());
-                }
-                for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
-                    if (doc.getType() == DocumentChange.Type.ADDED){
-                        FuentesAl fuentesAl = doc.getDocument().toObject(FuentesAl.class);
-                        listAdapter.add(fuentesAl);
-                    }
-                }
+        mFirestore.collection("SAI_UPS").whereEqualTo("aliment", aliment).whereEqualTo("t_alm_energia", t_alm_energia)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
 
-                adapter.notifyDataSetChanged();
-            }
-        });
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot documentSnapshots, @Nullable FirebaseFirestoreException e) {
+                        if (e != null){
+                            Log.d("Error", e.getMessage());
+                        }
+                        for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
+                            if (doc.getType() == DocumentChange.Type.ADDED){
+                                SAI_UPS saiUps = doc.getDocument().toObject(SAI_UPS.class);
+                                listAdapter.add(saiUps);
+                            }
+                        }
+
+                        adapter.notifyDataSetChanged();
+                    }
+                });
     }
 
 }

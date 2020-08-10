@@ -3,18 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home"
-            android:title="@string/menu_inicio" />
-        <item
-            android:id="@+id/nav_fuentes"
-            android:icon="@drawable/ic_arrow"
-            android:title="@string/menu_fuentes"/>
-        <item
-            android:id="@+id/nav_agregar"
-            android:title="Agregar" />
-    </group>
+    <item android:title="@string/alimentacion">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_home"
+                    android:icon="@drawable/ic_home"
+                    android:title="@string/menu_inicio" />
+                <item
+                    android:id="@+id/nav_fuentes"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_fuentes"/>
+                <item
+                    android:id="@+id/nav_dc"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_dc"/>
+                <item
+                    android:id="@+id/nav_1ac"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_1ac"/>
+                <item
+                    android:id="@+id/nav_2ac"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_2ac"/>
+                <item
+                    android:id="@+id/nav_agregar"
+                    android:title="Agregar" />
+            </group>
+        </menu>
+    </item>
 
 </menu>

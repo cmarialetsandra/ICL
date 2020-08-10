@@ -13,7 +13,7 @@ import com.iprocen.icl.R;
 
 import java.util.List;
 
-public class AdapterPregCuatro extends RecyclerView.Adapter<AdapterPregCuatro.PregCuatroViewHolder>{
+public class AdapterPregCuatro extends RecyclerView.Adapter<AdapterPregCuatro.ViewHolder>{
 
     List<FuentesAl> fuentesAlList;
 
@@ -23,14 +23,14 @@ public class AdapterPregCuatro extends RecyclerView.Adapter<AdapterPregCuatro.Pr
 
     @NonNull
     @Override
-    public PregCuatroViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_result_1, parent,false);
-        PregCuatroViewHolder holder = new PregCuatroViewHolder(v);
+        ViewHolder holder = new ViewHolder(v);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final PregCuatroViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final FuentesAl opc = fuentesAlList.get(position);
         holder.txtDesc.setText(opc.getDesc());
         holder.txtNmroParte.setText(opc.getNmro_parte());
@@ -46,11 +46,11 @@ public class AdapterPregCuatro extends RecyclerView.Adapter<AdapterPregCuatro.Pr
         return fuentesAlList.size();
     }
 
-    public static class PregCuatroViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView txtDesc, txtNmroParte, txtClasif;
         Context context;
 
-        public PregCuatroViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtDesc = (TextView) itemView.findViewById(R.id.txt_desc1);
             txtNmroParte = (TextView) itemView.findViewById(R.id.txt_nmro1);

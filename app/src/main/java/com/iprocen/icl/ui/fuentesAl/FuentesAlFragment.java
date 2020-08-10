@@ -20,6 +20,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.iprocen.icl.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class FuentesAlFragment extends Fragment {
@@ -37,23 +39,25 @@ public class FuentesAlFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_fuentes_al, container, false);
-    }
+        View view = inflater.inflate(R.layout.fragment_fuentes_al, container, false);
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        txt_preg = getActivity().findViewById(R.id.txt_preg);
+        txt_preg = (TextView) view.findViewById(R.id.txt_preg);
         txt_preg.setText(R.string.pg1fa);
 
-        recyclerView = getActivity().findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mFirestore = FirebaseFirestore.getInstance();
 
         adapter = new AdapterPregUno(listAdapter);
         recyclerView.setAdapter(adapter);
+
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
         listarDatos();
     }

@@ -1,4 +1,4 @@
-package com.iprocen.icl.ui.fuentesAl;
+package com.iprocen.icl.ui.SAI_UPS;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,33 +16,33 @@ import com.iprocen.icl.R;
 
 import java.util.List;
 
-public class AdapterPregDos extends RecyclerView.Adapter<AdapterPregDos.ViewHolder>{
+public class UPSAdapterPregCuatro extends RecyclerView.Adapter<UPSAdapterPregCuatro.ViewHolder>{
 
-    List<FuentesAl> fuentesAlList;
+    List<SAI_UPS> saiList;
 
-    public AdapterPregDos(List<FuentesAl> fuentesAlList) {
-        this.fuentesAlList = fuentesAlList;
+    public UPSAdapterPregCuatro(List<SAI_UPS> saiList) {
+        this.saiList = saiList;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public UPSAdapterPregCuatro.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_opc, parent,false);
-        ViewHolder holder = new ViewHolder(v);
+        UPSAdapterPregCuatro.ViewHolder holder = new UPSAdapterPregCuatro.ViewHolder(v);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        final FuentesAl opc = fuentesAlList.get(position);
-        holder.txtOpc.setText(opc.getS_tension());
+    public void onBindViewHolder(@NonNull final UPSAdapterPregCuatro.ViewHolder holder, int position) {
+        final SAI_UPS opc = saiList.get(position);
+        holder.txtOpc.setText(opc.getT_alm_energia());
         holder.txtOpc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("fase", opc.getFase());
-                bundle.putString("s_tension", opc.getS_tension());
-                PregTresFragment fragment = new PregTresFragment();
+                bundle.putInt("aliment", opc.getAliment());
+                bundle.putString("t_alm_energia", opc.getT_alm_energia());
+                UPSPregCincoFragment fragment = new UPSPregCincoFragment();
                 fragment.setArguments(bundle);
                 FragmentTransaction transaction = ((AppCompatActivity) holder.context).getSupportFragmentManager().beginTransaction()
                         .replace(R.id.nav_host_fragment, fragment).disallowAddToBackStack();
@@ -53,7 +53,7 @@ public class AdapterPregDos extends RecyclerView.Adapter<AdapterPregDos.ViewHold
 
     @Override
     public int getItemCount() {
-        return fuentesAlList.size();
+        return saiList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{

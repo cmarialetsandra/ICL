@@ -1,12 +1,10 @@
-package com.iprocen.icl.ui.fuentesAl;
+package com.iprocen.icl.ui.SAI_UPS;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,7 +25,7 @@ import com.iprocen.icl.R;
 
 import java.util.ArrayList;
 
-public class PregCuatroFragment extends Fragment {
+public class UPSPregTresFragment extends Fragment {
 
     FirebaseFirestore mFirestore;
 
@@ -35,27 +33,27 @@ public class PregCuatroFragment extends Fragment {
     RecyclerView recyclerView;
     FloatingActionButton btn_sig;
 
-    private ArrayList<FuentesAl> listAdapter = new ArrayList<>();
+    private ArrayList<SAI_UPS> listAdapter = new ArrayList<>();
+    UPSAdapterPregTres adapter;
 
-    AdapterPregCuatro adapter;
-
-    String fase, s_tension, s_corriente;
+    private int aliment;
+    private String alm_energia, entrada, salida;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fuentes_al4, container, false);
+        View view = inflater.inflate(R.layout.fragment_ups3, container, false);
 
-        txt_preg = (TextView) view.findViewById(R.id.txt_pregfa4);
+        txt_preg = (TextView) view.findViewById(R.id.txt_preg_dc3);
         txt_preg.setText(R.string.result);
 
-        btn_sig = (FloatingActionButton) view.findViewById(R.id.btn_sigfa4);
+        btn_sig = (FloatingActionButton) view.findViewById(R.id.btn_sigdc3);
         btn_sig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("fase", fase);
-                PregCincoFragment fragment = new PregCincoFragment();
+                bundle.putInt("aliment", aliment);
+                UPSPregCuatroFragment fragment = new UPSPregCuatroFragment();
                 fragment.setArguments(bundle);
                 FragmentTransaction transaction = ((AppCompatActivity) getContext()).getSupportFragmentManager().beginTransaction()
                         .replace(R.id.nav_host_fragment, fragment).disallowAddToBackStack();
@@ -63,12 +61,12 @@ public class PregCuatroFragment extends Fragment {
             }
         });
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewfa4);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_dc3);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mFirestore = FirebaseFirestore.getInstance();
 
-        adapter = new AdapterPregCuatro(listAdapter);
+        adapter = new UPSAdapterPregTres(listAdapter);
         recyclerView.setAdapter(adapter);
 
         return view;
@@ -77,12 +75,12 @@ public class PregCuatroFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
-        fase = bundle.getString("fase");
-        s_tension = bundle.getString("s_tension");
-        s_corriente = bundle.getString("s_corriente");
+        aliment = bundle.getInt("aliment");
+        alm_energia = bundle.getString("alm_energia");
+        entrada = bundle.getString("entrada");
+        salida = bundle.getString("salida");
     }
 
-    @SuppressLint("RestrictedApi")
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -91,23 +89,25 @@ public class PregCuatroFragment extends Fragment {
     }
 
     private void listarDatos(){
-        mFirestore.collection("FuentesAl").whereEqualTo("fase", fase)
-                .whereEqualTo("s_tension", s_tension).whereEqualTo("s_corriente", s_corriente).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot documentSnapshots, @Nullable FirebaseFirestoreException e) {
-                if (e != null){
-                    Log.d("Error", e.getMessage());
-                }
-                for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
-                    if (doc.getType() == DocumentChange.Type.ADDED){
-                        FuentesAl fuentesAl = doc.getDocument().toObject(FuentesAl.class);
-                        listAdapter.add(fuentesAl);
-                    }
-                }
+        mFirestore.collection("SAI_UPS").whereEqualTo("aliment", aliment).whereEqualTo("alm_energia", alm_energia)
+                .whereEqualTo("entrada", entrada).whereEqualTo("salida", salida)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
 
-                adapter.notifyDataSetChanged();
-            }
-        });
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot documentSnapshots, @Nullable FirebaseFirestoreException e) {
+                        if (e != null){
+                            Log.d("Error", e.getMessage());
+                        }
+                        for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
+                            if (doc.getType() == DocumentChange.Type.ADDED){
+                                SAI_UPS saiUps = doc.getDocument().toObject(SAI_UPS.class);
+                                listAdapter.add(saiUps);
+                            }
+                        }
+
+                        adapter.notifyDataSetChanged();
+                    }
+                });
     }
 
 }

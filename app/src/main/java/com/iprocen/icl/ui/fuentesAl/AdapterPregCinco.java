@@ -16,7 +16,7 @@ import com.iprocen.icl.R;
 
 import java.util.List;
 
-public class AdapterPregCinco extends RecyclerView.Adapter<AdapterPregCinco.PregCincoViewHolder>{
+public class AdapterPregCinco extends RecyclerView.Adapter<AdapterPregCinco.ViewHolder>{
 
     List<FuentesAl> fuentesAlList;
 
@@ -26,15 +26,15 @@ public class AdapterPregCinco extends RecyclerView.Adapter<AdapterPregCinco.Preg
 
     @NonNull
     @Override
-    public PregCincoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler, parent,false);
-        PregCincoViewHolder holder = new PregCincoViewHolder(v);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_opc, parent,false);
+        ViewHolder holder = new ViewHolder(v);
         return holder;
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull final PregCincoViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final FuentesAl opc = fuentesAlList.get(position);
         holder.txtOpc.setText(opc.getVoltaje());
         holder.txtOpc.setOnClickListener(new View.OnClickListener() {
@@ -57,11 +57,11 @@ public class AdapterPregCinco extends RecyclerView.Adapter<AdapterPregCinco.Preg
         return fuentesAlList.size();
     }
 
-    public static class PregCincoViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView txtOpc;
         Context context;
 
-        public PregCincoViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtOpc = (TextView) itemView.findViewById(R.id.txt_opc);
             context = itemView.getContext();

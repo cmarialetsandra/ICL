@@ -42,7 +42,20 @@ public class PregCincoFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_fuentes_al, container, false);
+        View view = inflater.inflate(R.layout.fragment_fuentes_al5, container, false);
+
+        txt_preg = (TextView) view.findViewById(R.id.txt_pregfa5);
+        txt_preg.setText(R.string.voltaje);
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewfa5);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        mFirestore = FirebaseFirestore.getInstance();
+
+        adapter = new AdapterPregCinco(listAdapter);
+        recyclerView.setAdapter(adapter);
+
+        return view;
     }
 
     @Override
@@ -51,24 +64,9 @@ public class PregCincoFragment extends Fragment {
         fase = bundle.getString("fase");
     }
 
-    @SuppressLint("RestrictedApi")
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        txt_preg = getActivity().findViewById(R.id.txt_preg);
-        txt_preg.setText(R.string.voltaje);
-
-        btn_sig = getActivity().findViewById(R.id.btn_sig);
-        btn_sig.setVisibility(View.GONE);
-
-        recyclerView = getActivity().findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        mFirestore = FirebaseFirestore.getInstance();
-
-        adapter = new AdapterPregCinco(listAdapter);
-        recyclerView.setAdapter(adapter);
 
         listarDatos();
     }

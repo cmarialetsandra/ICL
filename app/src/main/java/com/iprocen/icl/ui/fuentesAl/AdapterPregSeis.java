@@ -13,7 +13,7 @@ import com.iprocen.icl.R;
 
 import java.util.List;
 
-public class AdapterPregSeis extends RecyclerView.Adapter<AdapterPregSeis.PregSeisViewHolder>{
+public class AdapterPregSeis extends RecyclerView.Adapter<AdapterPregSeis.ViewHolder>{
 
     List<FuentesAl> fuentesAlList;
 
@@ -23,15 +23,15 @@ public class AdapterPregSeis extends RecyclerView.Adapter<AdapterPregSeis.PregSe
 
     @NonNull
     @Override
-    public PregSeisViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_result_2, parent,false);
-        PregSeisViewHolder holder = new PregSeisViewHolder(v);
+        ViewHolder holder = new ViewHolder(v);
         return holder;
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull final PregSeisViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final FuentesAl opc = fuentesAlList.get(position);
         holder.txtCorriente.setText(opc.getCorriente());
         holder.txtDesc.setText(opc.getDesc());
@@ -43,11 +43,11 @@ public class AdapterPregSeis extends RecyclerView.Adapter<AdapterPregSeis.PregSe
         return fuentesAlList.size();
     }
 
-    public static class PregSeisViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView txtCorriente, txtDesc, txtNmroParte;
         Context context;
 
-        public PregSeisViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtCorriente = (TextView) itemView.findViewById(R.id.txt_corriente);
             txtDesc = (TextView) itemView.findViewById(R.id.txt_desc2);
