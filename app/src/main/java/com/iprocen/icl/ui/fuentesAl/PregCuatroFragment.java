@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,12 +43,12 @@ public class PregCuatroFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fuentes_al4, container, false);
+        View view = inflater.inflate(R.layout.fragment_opc_boton, container, false);
 
-        txt_preg = (TextView) view.findViewById(R.id.txt_pregfa4);
+        txt_preg = (TextView) view.findViewById(R.id.txt_preg);
         txt_preg.setText(R.string.result);
 
-        btn_sig = (FloatingActionButton) view.findViewById(R.id.btn_sigfa4);
+        btn_sig = (FloatingActionButton) view.findViewById(R.id.btn_sig);
         btn_sig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +62,7 @@ public class PregCuatroFragment extends Fragment {
             }
         });
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewfa4);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mFirestore = FirebaseFirestore.getInstance();

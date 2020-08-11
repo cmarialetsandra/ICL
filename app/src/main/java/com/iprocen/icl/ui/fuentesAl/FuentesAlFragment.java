@@ -20,8 +20,6 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.iprocen.icl.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class FuentesAlFragment extends Fragment {
@@ -39,7 +37,7 @@ public class FuentesAlFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_fuentes_al, container, false);
+        View view = inflater.inflate(R.layout.fragment_opc, container, false);
 
         txt_preg = (TextView) view.findViewById(R.id.txt_preg);
         txt_preg.setText(R.string.pg1fa);

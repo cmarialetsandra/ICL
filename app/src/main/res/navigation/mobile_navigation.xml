@@ -15,31 +15,31 @@
         android:id="@+id/nav_fuentes"
         android:name="com.iprocen.icl.ui.fuentesAl.FuentesAlFragment"
         android:label="@string/menu_fuentes"
-        tools:layout="@layout/fragment_fuentes_al"/>
+        tools:layout="@layout/fragment_opc"/>
 
     <fragment
         android:id="@+id/nav_dc"
         android:name="com.iprocen.icl.ui.SAI_UPS.DCFragment"
         android:label="@string/menu_dc"
-        tools:layout="@layout/fragment_ups_dc"/>
+        tools:layout="@layout/fragment_opc"/>
 
     <fragment
         android:id="@+id/nav_1ac"
         android:name="com.iprocen.icl.ui.SAI_UPS.AC1kVAFragment"
         android:label="@string/menu_1ac"
-        tools:layout="@layout/fragment_ups_ac_1kva"/>
+        tools:layout="@layout/fragment_opc"/>
 
     <fragment
         android:id="@+id/nav_2ac"
         android:name="com.iprocen.icl.ui.SAI_UPS.AC500VAFragment"
         android:label="@string/menu_2ac"
-        tools:layout="@layout/fragment_ups_ac_500va"/>
+        tools:layout="@layout/fragment_opc"/>
 
     <fragment
         android:id="@+id/nav_protec"
         android:name="com.iprocen.icl.ui.protecSobre.ProtecSobreFragment"
         android:label="@string/menu_protec"
-        tools:layout="@layout/fragment_protec_sobre"/>
+        tools:layout="@layout/fragment_opc"/>
 
     <fragment
         android:id="@+id/nav_agregar"

@@ -1,6 +1,5 @@
 package com.iprocen.icl.ui.fuentesAl;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,12 +41,12 @@ public class PregCincoFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fuentes_al5, container, false);
+        View view = inflater.inflate(R.layout.fragment_opc, container, false);
 
-        txt_preg = (TextView) view.findViewById(R.id.txt_pregfa5);
+        txt_preg = (TextView) view.findViewById(R.id.txt_preg);
         txt_preg.setText(R.string.voltaje);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewfa5);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mFirestore = FirebaseFirestore.getInstance();

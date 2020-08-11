@@ -39,12 +39,12 @@ public class PregSeisFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fuentes_al6, container, false);
+        View view = inflater.inflate(R.layout.fragment_opc, container, false);
 
-        txt_preg = (TextView) view.findViewById(R.id.txt_pregfa6);
+        txt_preg = (TextView) view.findViewById(R.id.txt_preg);
         txt_preg.setText(R.string.result);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewfa6);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mFirestore = FirebaseFirestore.getInstance();

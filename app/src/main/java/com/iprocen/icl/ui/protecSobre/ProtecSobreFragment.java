@@ -19,8 +19,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.iprocen.icl.R;
-import com.iprocen.icl.ui.SAI_UPS.SAI_UPS;
-import com.iprocen.icl.ui.SAI_UPS.UPSAdapterPregUno;
 
 import java.util.ArrayList;
 
@@ -38,12 +36,12 @@ public class ProtecSobreFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_protec_sobre, container, false);
+        View view = inflater.inflate(R.layout.fragment_opc, container, false);
 
-        txt_preg = (TextView) view.findViewById(R.id.txt_preg_ps);
+        txt_preg = (TextView) view.findViewById(R.id.txt_preg);
         txt_preg.setText(R.string.pg1ps);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_ps);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mFirestore = FirebaseFirestore.getInstance();

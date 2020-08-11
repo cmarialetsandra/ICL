@@ -38,12 +38,12 @@ public class PregDosFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fuentes_al2, container, false);
+        View view = inflater.inflate(R.layout.fragment_opc, container, false);
 
-        txt_preg = (TextView) view.findViewById(R.id.txt_pregfa2);
+        txt_preg = (TextView) view.findViewById(R.id.txt_preg);
         txt_preg.setText(R.string.pg2fa);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewfa2);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mFirestore = FirebaseFirestore.getInstance();

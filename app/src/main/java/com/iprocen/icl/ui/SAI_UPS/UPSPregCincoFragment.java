@@ -38,12 +38,12 @@ public class UPSPregCincoFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_ups5, container, false);
+        View view = inflater.inflate(R.layout.fragment_opc, container, false);
 
-        txt_preg = (TextView) view.findViewById(R.id.txt_preg_dc5);
+        txt_preg = (TextView) view.findViewById(R.id.txt_preg);
         txt_preg.setText(R.string.result);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_dc5);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mFirestore = FirebaseFirestore.getInstance();
