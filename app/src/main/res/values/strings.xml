@@ -9,6 +9,7 @@
     <string name="menu_dc">Alimentación DC</string>
     <string name="menu_1ac">Alimentación AC-1kVA</string>
     <string name="menu_2ac">Alimentación AC-500 VA</string>
+    <string name="menu_protec">Protección contra Sobretensiones</string>
 
     <string name="alimentacion">Alimentación Confiable</string>
 
@@ -27,6 +28,14 @@
     <string name="pg2dc">¿Qué salida de potencia/corriente?</string>
     <string name="pg3dc">¿Qué tipo de dispositivo de almacenamiento de energía?</string>
     <string name="pg1ac">¿Cuál es el voltaje de entrada?</string>
+
+    <!-- PROTECCIÓN CONTRA SOBRETENSIONES -->
+    <string name="pg1ps">¿Qué tipo de señal necesitas proteger?</string>
+    <string name="pg2ps">¿Requieres una conexión push-in, tornillo, RJ45 o D-SUB?</string>
+    <string name="pg3ps">¿Cuál es el voltaje requerido?</string>
+    <string name="pg4ps">¿Utilizarás conexión a tierra directa o indirecta?</string>
+    <string name="pg5ps">¿Qué diseño: enchufable o no-enchufable?</string>
+    <string name="pg6ps">¿Con o sin monitoreo de estado?</string>
 
     <string name="result">Resultado</string>
     <string name="desc">Descripción</string>

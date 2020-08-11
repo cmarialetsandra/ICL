@@ -27,6 +27,10 @@
                     android:icon="@drawable/ic_arrow"
                     android:title="@string/menu_2ac"/>
                 <item
+                    android:id="@+id/nav_protec"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_protec"/>
+                <item
                     android:id="@+id/nav_agregar"
                     android:title="Agregar" />
             </group>

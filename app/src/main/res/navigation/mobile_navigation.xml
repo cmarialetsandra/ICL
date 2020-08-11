@@ -36,6 +36,12 @@
         tools:layout="@layout/fragment_ups_ac_500va"/>
 
     <fragment
+        android:id="@+id/nav_protec"
+        android:name="com.iprocen.icl.ui.protecSobre.ProtecSobreFragment"
+        android:label="@string/menu_protec"
+        tools:layout="@layout/fragment_protec_sobre"/>
+
+    <fragment
         android:id="@+id/nav_agregar"
         android:name="com.iprocen.icl.Agregar"
         android:label="Agregar"
