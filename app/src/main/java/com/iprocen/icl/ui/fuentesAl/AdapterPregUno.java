@@ -18,7 +18,7 @@ import java.util.List;
 
 public class AdapterPregUno extends RecyclerView.Adapter<AdapterPregUno.ViewHolder>{
 
-    List<FuentesAl> fuentesAlList;
+    private List<FuentesAl> fuentesAlList;
 
     public AdapterPregUno(List<FuentesAl> fuentesAlList) {
         this.fuentesAlList = fuentesAlList;

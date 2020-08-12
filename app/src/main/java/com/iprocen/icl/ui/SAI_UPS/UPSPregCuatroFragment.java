@@ -24,14 +24,14 @@ import java.util.ArrayList;
 
 public class UPSPregCuatroFragment extends Fragment {
 
-    FirebaseFirestore mFirestore;
+    private FirebaseFirestore mFirestore;
 
-    TextView txt_preg;
-    RecyclerView recyclerView;
+    private TextView txt_preg;
+    private RecyclerView recyclerView;
 
     private ArrayList<SAI_UPS> listSAI = new ArrayList<>();
     private ArrayList<SAI_UPS> listAdapter = new ArrayList<>();
-    UPSAdapterPregCuatro adapter;
+    private UPSAdapterPregCuatro adapter;
 
     private int aliment;
     private String alm_energia = "Sí";

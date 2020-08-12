@@ -24,13 +24,13 @@ import java.util.ArrayList;
 
 public class UPSPregCincoFragment extends Fragment {
 
-    FirebaseFirestore mFirestore;
+    private FirebaseFirestore mFirestore;
 
-    TextView txt_preg;
-    RecyclerView recyclerView;
+    private TextView txt_preg;
+    private RecyclerView recyclerView;
 
     private ArrayList<SAI_UPS> listAdapter = new ArrayList<>();
-    UPSAdapterPregCinco adapter;
+    private UPSAdapterPregCinco adapter;
 
     private int aliment;
     private String t_alm_energia;

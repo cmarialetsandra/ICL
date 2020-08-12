@@ -1,4 +1,4 @@
-package com.iprocen.icl.ui.protecSobre;
+package com.iprocen.icl.ui.acondiSe;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,36 +10,36 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.iprocen.icl.R;
-import com.iprocen.icl.ui.SAI_UPS.SAI_UPS;
+import com.iprocen.icl.ui.protecSobre.ProtecSobre;
 
 import java.util.List;
 
-public class AdapterPregSiete extends RecyclerView.Adapter<AdapterPregSiete.ViewHolder>{
+public class AdapterPregCinco extends RecyclerView.Adapter<AdapterPregCinco.ViewHolder>{
 
-    private List<ProtecSobre> psList;
+    private List<AcondiSe> asList;
 
-    public AdapterPregSiete(List<ProtecSobre> psList) {
-        this.psList = psList;
+    public AdapterPregCinco(List<AcondiSe> asList) {
+        this.asList = asList;
     }
 
     @NonNull
     @Override
-    public AdapterPregSiete.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterPregCinco.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_result_3, parent,false);
-        AdapterPregSiete.ViewHolder holder = new AdapterPregSiete.ViewHolder(v);
+        AdapterPregCinco.ViewHolder holder = new AdapterPregCinco.ViewHolder(v);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final AdapterPregSiete.ViewHolder holder, int position) {
-        final ProtecSobre opc = psList.get(position);
+    public void onBindViewHolder(@NonNull final AdapterPregCinco.ViewHolder holder, int position) {
+        final AcondiSe opc = asList.get(position);
         holder.txtDesc.setText(opc.getDesc());
         holder.txtNmroParte.setText(opc.getNmro_parte());
     }
 
     @Override
     public int getItemCount() {
-        return psList.size();
+        return asList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{

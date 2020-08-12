@@ -27,14 +27,14 @@ import java.util.ArrayList;
 
 public class UPSPregTresFragment extends Fragment {
 
-    FirebaseFirestore mFirestore;
+    private FirebaseFirestore mFirestore;
 
-    TextView txt_preg;
-    RecyclerView recyclerView;
-    FloatingActionButton btn_sig;
+    private TextView txt_preg;
+    private RecyclerView recyclerView;
+    private FloatingActionButton btn_sig;
 
     private ArrayList<SAI_UPS> listAdapter = new ArrayList<>();
-    UPSAdapterPregTres adapter;
+    private UPSAdapterPregTres adapter;
 
     private int aliment;
     private String alm_energia, entrada, salida;

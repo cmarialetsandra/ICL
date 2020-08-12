@@ -11,7 +11,12 @@
     <string name="menu_2ac">Alimentación AC-500 VA</string>
     <string name="menu_protec">Protección contra Sobretensiones</string>
 
+    <string name="menu_acondi">Acondicionadores de Señal</string>
+
+
+
     <string name="alimentacion">Alimentación Confiable</string>
+    <string name="conectividad">Conectividad</string>
 
     <!-- FUENTES DE ALIMENTACION -->
     <string name="pg1fa">¿Necesita una fuente de alimentación monofásica o trifásica?</string>
@@ -36,6 +41,13 @@
     <string name="pg4ps">¿Utilizarás conexión a tierra directa o indirecta?</string>
     <string name="pg5ps">¿Qué diseño: enchufable o no-enchufable?</string>
     <string name="pg6ps">¿Con o sin monitoreo de estado?</string>
+
+
+    <!-- ACONDICIONADORES DE SEÑAL -->
+    <string name="pg1as">¿Qué tipo de conversión y/o aislamiento necesita?</string>
+    <string name="pg2as">¿Cuál es la alimentación del módulo?</string>
+    <string name="pg3as">¿Cuál es su señal de entrada?</string>
+    <string name="pg4as">¿Cuál es la señal de salida?</string>
 
     <string name="result">Resultado</string>
     <string name="desc">Descripción</string>

@@ -18,7 +18,7 @@ import java.util.List;
 
 public class AdapterPregTres extends RecyclerView.Adapter<AdapterPregTres.ViewHolder>{
 
-    List<ProtecSobre> psList;
+    private List<ProtecSobre> psList;
 
     public AdapterPregTres(List<ProtecSobre> psList) {
         this.psList = psList;

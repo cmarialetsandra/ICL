@@ -24,17 +24,17 @@ import java.util.ArrayList;
 
 public class PregTresFragment extends Fragment {
 
-    FirebaseFirestore mFirestore;
+    private FirebaseFirestore mFirestore;
 
-    TextView txt_preg;
-    RecyclerView recyclerView;
+    private TextView txt_preg;
+    private RecyclerView recyclerView;
 
     private ArrayList<FuentesAl> listFuentesA = new ArrayList<>();
     private ArrayList<FuentesAl> listAdapter = new ArrayList<>();
 
-    AdapterPregTres adapter;
+    private AdapterPregTres adapter;
 
-    String fase, s_tension;
+    private String fase, s_tension;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

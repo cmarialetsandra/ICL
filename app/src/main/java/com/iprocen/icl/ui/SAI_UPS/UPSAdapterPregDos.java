@@ -18,7 +18,7 @@ import java.util.List;
 
 public class UPSAdapterPregDos extends RecyclerView.Adapter<UPSAdapterPregDos.ViewHolder>{
 
-    List<SAI_UPS> saiList;
+    private List<SAI_UPS> saiList;
 
     public UPSAdapterPregDos(List<SAI_UPS> saiList) {
         this.saiList = saiList;

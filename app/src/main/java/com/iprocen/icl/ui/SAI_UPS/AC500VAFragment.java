@@ -24,14 +24,14 @@ import java.util.ArrayList;
 
 public class AC500VAFragment extends Fragment {
 
-    FirebaseFirestore mFirestore;
+    private FirebaseFirestore mFirestore;
 
-    TextView txt_preg;
-    RecyclerView recyclerView;
+    private TextView txt_preg;
+    private RecyclerView recyclerView;
 
     private ArrayList<SAI_UPS> listSAI = new ArrayList<>();
     private ArrayList<SAI_UPS> listAdapter = new ArrayList<>();
-    UPSAdapterPregUno adapter;
+    private UPSAdapterPregUno adapter;
 
     private int aliment = 3;
     private String alm_energia = "No";

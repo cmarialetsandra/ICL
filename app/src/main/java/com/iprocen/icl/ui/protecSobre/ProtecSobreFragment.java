@@ -24,14 +24,14 @@ import java.util.ArrayList;
 
 public class ProtecSobreFragment extends Fragment {
 
-    FirebaseFirestore mFirestore;
+    private FirebaseFirestore mFirestore;
 
-    TextView txt_preg;
-    RecyclerView recyclerView;
+    private TextView txt_preg;
+    private RecyclerView recyclerView;
 
     private ArrayList<ProtecSobre> listPS = new ArrayList<>();
     private ArrayList<ProtecSobre> listAdapter = new ArrayList<>();
-    AdapterPregUno adapter;
+    private AdapterPregUno adapter;
 
     @Nullable
     @Override

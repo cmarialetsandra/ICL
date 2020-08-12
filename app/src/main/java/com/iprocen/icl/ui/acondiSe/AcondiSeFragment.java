@@ -1,4 +1,4 @@
-package com.iprocen.icl.ui.protecSobre;
+package com.iprocen.icl.ui.acondiSe;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -22,17 +22,16 @@ import com.iprocen.icl.R;
 
 import java.util.ArrayList;
 
-public class PregSieteFragment extends Fragment {
+public class AcondiSeFragment extends Fragment {
 
     private FirebaseFirestore mFirestore;
 
     private TextView txt_preg;
     private RecyclerView recyclerView;
 
-    private ArrayList<ProtecSobre> listAdapter = new ArrayList<>();
-    private AdapterPregSiete adapter;
-
-    private String senial, conexion, voltaje, aterrizaje, disenio, monitoreo;
+    private ArrayList<AcondiSe> listAS = new ArrayList<>();
+    private ArrayList<AcondiSe> listAdapter = new ArrayList<>();
+    private AdapterPregUno adapter;
 
     @Nullable
     @Override
@@ -40,40 +39,28 @@ public class PregSieteFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_opc, container, false);
 
         txt_preg = (TextView) view.findViewById(R.id.txt_preg);
-        txt_preg.setText(R.string.result);
+        txt_preg.setText(R.string.pg1as);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mFirestore = FirebaseFirestore.getInstance();
 
-        adapter = new AdapterPregSiete(listAdapter);
+        adapter = new AdapterPregUno(listAdapter);
         recyclerView.setAdapter(adapter);
 
         return view;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Bundle bundle = getArguments();
-        senial = bundle.getString("senial");
-        conexion = bundle.getString("conexion");
-        voltaje = bundle.getString("voltaje");
-        aterrizaje = bundle.getString("aterrizaje");
-        disenio = bundle.getString("disenio");
-        monitoreo = bundle.getString("monitoreo");
-    }
-
-    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         listarDatos();
     }
 
     private void listarDatos(){
-        mFirestore.collection("ProtecSobre").whereEqualTo("senial", senial).whereEqualTo("conexion", conexion)
-                .whereEqualTo("voltaje", voltaje).whereEqualTo("aterrizaje", aterrizaje).whereEqualTo("disenio", disenio)
-                .whereEqualTo("monitoreo", monitoreo)
+        mFirestore.collection("AcondiSe")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
 
             @Override
@@ -83,8 +70,18 @@ public class PregSieteFragment extends Fragment {
                 }
                 for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
                     if (doc.getType() == DocumentChange.Type.ADDED){
-                        ProtecSobre protecSobr = doc.getDocument().toObject(ProtecSobre.class);
-                        listAdapter.add(protecSobr);
+                        AcondiSe acondiSe = doc.getDocument().toObject(AcondiSe.class);
+                        listAS.add(acondiSe);
+                    }
+                }
+
+                for (AcondiSe as1: listAS){
+                    for (AcondiSe as2: listAS){
+                        if (as1.getConversion().equals(as2.getConversion())){
+                            if (agregar(as1.getConversion())){
+                                listAdapter.add(as1);
+                            }
+                        }
                     }
                 }
 
@@ -93,4 +90,12 @@ public class PregSieteFragment extends Fragment {
         });
     }
 
+    private boolean agregar(String valor){
+        for (AcondiSe acondiSe: listAdapter){
+            if (acondiSe.getConversion().equals(valor)){
+                return false;
+            }
+        }
+        return true;
+    }
 }

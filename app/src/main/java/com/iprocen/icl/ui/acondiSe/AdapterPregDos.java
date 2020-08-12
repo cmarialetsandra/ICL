@@ -1,4 +1,4 @@
-package com.iprocen.icl.ui.protecSobre;
+package com.iprocen.icl.ui.acondiSe;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,10 +18,10 @@ import java.util.List;
 
 public class AdapterPregDos extends RecyclerView.Adapter<AdapterPregDos.ViewHolder>{
 
-    private List<ProtecSobre> psList;
+    private List<AcondiSe> asList;
 
-    public AdapterPregDos(List<ProtecSobre> psList) {
-        this.psList = psList;
+    public AdapterPregDos(List<AcondiSe> asList) {
+        this.asList = asList;
     }
 
     @NonNull
@@ -34,14 +34,14 @@ public class AdapterPregDos extends RecyclerView.Adapter<AdapterPregDos.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        final ProtecSobre opc = psList.get(position);
-        holder.txtOpc.setText(opc.getConexion());
+        final AcondiSe opc = asList.get(position);
+        holder.txtOpc.setText(opc.getAliment());
         holder.txtOpc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("senial", opc.getSenial());
-                bundle.putString("conexion", opc.getConexion());
+                bundle.putString("conversion", opc.getConversion());
+                bundle.putString("aliment", opc.getAliment());
                 PregTresFragment fragment = new PregTresFragment();
                 fragment.setArguments(bundle);
                 FragmentTransaction transaction = ((AppCompatActivity) holder.context).getSupportFragmentManager().beginTransaction()
@@ -53,7 +53,7 @@ public class AdapterPregDos extends RecyclerView.Adapter<AdapterPregDos.ViewHold
 
     @Override
     public int getItemCount() {
-        return psList.size();
+        return asList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{

@@ -18,7 +18,7 @@ import java.util.List;
 
 public class UPSAdapterPregUno extends RecyclerView.Adapter<UPSAdapterPregUno.ViewHolder>{
 
-    List<SAI_UPS> saiList;
+    private List<SAI_UPS> saiList;
 
     public UPSAdapterPregUno(List<SAI_UPS> saiList) {
         this.saiList = saiList;

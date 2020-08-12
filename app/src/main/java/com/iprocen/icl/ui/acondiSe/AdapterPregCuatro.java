@@ -1,4 +1,4 @@
-package com.iprocen.icl.ui.protecSobre;
+package com.iprocen.icl.ui.acondiSe;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,12 +16,12 @@ import com.iprocen.icl.R;
 
 import java.util.List;
 
-public class AdapterPregDos extends RecyclerView.Adapter<AdapterPregDos.ViewHolder>{
+public class AdapterPregCuatro extends RecyclerView.Adapter<AdapterPregCuatro.ViewHolder>{
 
-    private List<ProtecSobre> psList;
+    private List<AcondiSe> asList;
 
-    public AdapterPregDos(List<ProtecSobre> psList) {
-        this.psList = psList;
+    public AdapterPregCuatro(List<AcondiSe> asList) {
+        this.asList = asList;
     }
 
     @NonNull
@@ -34,15 +34,17 @@ public class AdapterPregDos extends RecyclerView.Adapter<AdapterPregDos.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        final ProtecSobre opc = psList.get(position);
-        holder.txtOpc.setText(opc.getConexion());
+        final AcondiSe opc = asList.get(position);
+        holder.txtOpc.setText(opc.getSalida());
         holder.txtOpc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("senial", opc.getSenial());
-                bundle.putString("conexion", opc.getConexion());
-                PregTresFragment fragment = new PregTresFragment();
+                bundle.putString("conversion", opc.getConversion());
+                bundle.putString("aliment", opc.getAliment());
+                bundle.putString("entrada", opc.getEntrada());
+                bundle.putString("salida", opc.getSalida());
+                PregCincoFragment fragment = new PregCincoFragment();
                 fragment.setArguments(bundle);
                 FragmentTransaction transaction = ((AppCompatActivity) holder.context).getSupportFragmentManager().beginTransaction()
                         .replace(R.id.nav_host_fragment, fragment).disallowAddToBackStack();
@@ -53,7 +55,7 @@ public class AdapterPregDos extends RecyclerView.Adapter<AdapterPregDos.ViewHold
 
     @Override
     public int getItemCount() {
-        return psList.size();
+        return asList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{

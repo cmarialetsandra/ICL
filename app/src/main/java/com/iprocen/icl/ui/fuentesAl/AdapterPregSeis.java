@@ -15,7 +15,7 @@ import java.util.List;
 
 public class AdapterPregSeis extends RecyclerView.Adapter<AdapterPregSeis.ViewHolder>{
 
-    List<FuentesAl> fuentesAlList;
+    private List<FuentesAl> fuentesAlList;
 
     public AdapterPregSeis(List<FuentesAl> fuentesAlList) {
         this.fuentesAlList = fuentesAlList;

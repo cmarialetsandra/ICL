@@ -18,7 +18,7 @@ import java.util.List;
 
 public class AdapterPregSeis extends RecyclerView.Adapter<AdapterPregSeis.ViewHolder>{
 
-    List<ProtecSobre> psList;
+    private List<ProtecSobre> psList;
 
     public AdapterPregSeis(List<ProtecSobre> psList) {
         this.psList = psList;

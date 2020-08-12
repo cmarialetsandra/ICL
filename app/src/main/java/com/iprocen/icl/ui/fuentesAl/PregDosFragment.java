@@ -24,17 +24,17 @@ import java.util.ArrayList;
 
 public class PregDosFragment extends Fragment {
 
-    FirebaseFirestore mFirestore;
+    private FirebaseFirestore mFirestore;
 
-    TextView txt_preg;
-    RecyclerView recyclerView;
+    private TextView txt_preg;
+    private RecyclerView recyclerView;
 
     private ArrayList<FuentesAl> listFuentesA = new ArrayList<>();
     private ArrayList<FuentesAl> listAdapter = new ArrayList<>();
 
-    AdapterPregDos adapter;
+    private AdapterPregDos adapter;
 
-    String fase;
+    private String fase;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

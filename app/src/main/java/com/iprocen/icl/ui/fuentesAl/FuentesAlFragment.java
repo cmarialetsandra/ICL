@@ -24,14 +24,14 @@ import java.util.ArrayList;
 
 public class FuentesAlFragment extends Fragment {
 
-    FirebaseFirestore mFirestore;
+    private FirebaseFirestore mFirestore;
 
-    TextView txt_preg;
-    RecyclerView recyclerView;
+    private TextView txt_preg;
+    private RecyclerView recyclerView;
 
     private ArrayList<FuentesAl> listFuentesA = new ArrayList<>();
     private ArrayList<FuentesAl> listAdapter = new ArrayList<>();
-    AdapterPregUno adapter;
+    private AdapterPregUno adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

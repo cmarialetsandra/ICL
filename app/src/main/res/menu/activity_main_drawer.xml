@@ -3,13 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/menu_inicio" />
+        <item
+            android:id="@+id/nav_agregar"
+            android:title="Agregar" />
+    </group>
+
     <item android:title="@string/alimentacion">
         <menu>
             <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/nav_home"
-                    android:icon="@drawable/ic_home"
-                    android:title="@string/menu_inicio" />
                 <item
                     android:id="@+id/nav_fuentes"
                     android:icon="@drawable/ic_arrow"
@@ -30,9 +36,17 @@
                     android:id="@+id/nav_protec"
                     android:icon="@drawable/ic_arrow"
                     android:title="@string/menu_protec"/>
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/conectividad">
+        <menu>
+            <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_agregar"
-                    android:title="Agregar" />
+                    android:id="@+id/nav_acondi"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_acondi" />
             </group>
         </menu>
     </item>

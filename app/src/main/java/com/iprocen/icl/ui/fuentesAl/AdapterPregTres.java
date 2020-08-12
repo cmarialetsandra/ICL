@@ -18,7 +18,7 @@ import java.util.List;
 
 public class AdapterPregTres extends RecyclerView.Adapter<AdapterPregTres.ViewHolder>{
 
-    List<FuentesAl> fuentesAlList;
+    private List<FuentesAl> fuentesAlList;
 
     public AdapterPregTres(List<FuentesAl> fuentesAlList) {
         this.fuentesAlList = fuentesAlList;

@@ -25,16 +25,16 @@ import java.util.ArrayList;
 
 public class PregSeisFragment extends Fragment {
 
-    FirebaseFirestore mFirestore;
+    private FirebaseFirestore mFirestore;
 
-    TextView txt_preg;
-    RecyclerView recyclerView;
+    private TextView txt_preg;
+    private RecyclerView recyclerView;
 
     private ArrayList<FuentesAl> listAdapter = new ArrayList<>();
 
-    AdapterPregSeis adapter;
+    private AdapterPregSeis adapter;
 
-    String fase, voltaje;
+    private String fase, voltaje;
 
     @Nullable
     @Override

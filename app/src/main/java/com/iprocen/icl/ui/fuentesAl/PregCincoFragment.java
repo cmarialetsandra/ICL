@@ -25,18 +25,18 @@ import java.util.ArrayList;
 
 public class PregCincoFragment extends Fragment {
 
-    FirebaseFirestore mFirestore;
+    private FirebaseFirestore mFirestore;
 
-    TextView txt_preg;
-    RecyclerView recyclerView;
-    FloatingActionButton btn_sig;
+    private TextView txt_preg;
+    private RecyclerView recyclerView;
+    private FloatingActionButton btn_sig;
 
     private ArrayList<FuentesAl> listFuentesA = new ArrayList<>();
     private ArrayList<FuentesAl> listAdapter = new ArrayList<>();
 
-    AdapterPregCinco adapter;
+    private AdapterPregCinco adapter;
 
-    String fase;
+    private String fase;
 
     @Nullable
     @Override

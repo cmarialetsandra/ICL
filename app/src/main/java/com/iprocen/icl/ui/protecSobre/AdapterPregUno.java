@@ -20,7 +20,7 @@ import java.util.List;
 
 public class AdapterPregUno extends RecyclerView.Adapter<AdapterPregUno.ViewHolder>{
 
-    List<ProtecSobre> psList;
+    private List<ProtecSobre> psList;
 
     public AdapterPregUno(List<ProtecSobre> psList) {
         this.psList = psList;
