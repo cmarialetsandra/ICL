@@ -1,4 +1,4 @@
-package com.iprocen.icl.ui.SAI_UPS;
+package com.iprocen.icl.ui.circuitBr.TMC;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -19,22 +19,23 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.iprocen.icl.R;
+import com.iprocen.icl.ui.circuitBr.CircuitBr;
 
 import java.util.ArrayList;
 
-public class UPSPregDosFragment extends Fragment {
+public class TMCCuatroFragment extends Fragment {
 
     private FirebaseFirestore mFirestore;
 
     private TextView txt_preg;
     private RecyclerView recyclerView;
 
-    private ArrayList<SAI_UPS> listSAI = new ArrayList<>();
-    private ArrayList<SAI_UPS> listAdapter = new ArrayList<>();
-    private UPSAdapterPregDos adapter;
+    private ArrayList<CircuitBr> listCB = new ArrayList<>();
+    private ArrayList<CircuitBr> listAdapter = new ArrayList<>();
+    private AdapterTMCPregCuatro adapter;
 
-    private int aliment;
-    private String alm_energia, entrada;
+    private int tipo;
+    private String ul, nmro_polos, curva;
 
     @Nullable
     @Override
@@ -42,14 +43,14 @@ public class UPSPregDosFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_opc, container, false);
 
         txt_preg = (TextView) view.findViewById(R.id.txt_preg);
-        txt_preg.setText(R.string.pg2ups);
+        txt_preg.setText(R.string.pg7cb);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mFirestore = FirebaseFirestore.getInstance();
 
-        adapter = new UPSAdapterPregDos(listAdapter);
+        adapter = new AdapterTMCPregCuatro(listAdapter);
         recyclerView.setAdapter(adapter);
 
         return view;
@@ -58,9 +59,10 @@ public class UPSPregDosFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
-        aliment = bundle.getInt("aliment");
-        alm_energia = bundle.getString("alm_energia");
-        entrada = bundle.getString("entrada");
+        tipo = bundle.getInt("tipo");
+        ul = bundle.getString("ul");
+        nmro_polos = bundle.getString("nmro_polos");
+        curva = bundle.getString("curva");
     }
 
     @Override
@@ -71,40 +73,40 @@ public class UPSPregDosFragment extends Fragment {
     }
 
     private void listarDatos(){
-        mFirestore.collection("SAI_UPS").whereEqualTo("aliment", aliment).whereEqualTo("alm_energia", alm_energia)
-                .whereEqualTo("entrada", entrada)
+        mFirestore.collection("CircuitBr").whereEqualTo("tipo", tipo).whereEqualTo("ul", ul)
+                .whereEqualTo("nmro_polos", nmro_polos).whereEqualTo("curva", curva)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
 
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot documentSnapshots, @Nullable FirebaseFirestoreException e) {
-                        if (e != null){
-                            Log.d("Error", e.getMessage());
-                        }
-                        for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
-                            if (doc.getType() == DocumentChange.Type.ADDED){
-                                SAI_UPS saiUps = doc.getDocument().toObject(SAI_UPS.class);
-                                listSAI.add(saiUps);
-                            }
-                        }
-
-                        for (SAI_UPS s1: listSAI){
-                            for (SAI_UPS s2: listSAI){
-                                if (s1.getSalida().equals(s2.getSalida())){
-                                    if (agregar(s1.getSalida())){
-                                        listAdapter.add(s1);
-                                    }
-                                }
-                            }
-                        }
-
-                        adapter.notifyDataSetChanged();
+            @Override
+            public void onEvent(@Nullable QuerySnapshot documentSnapshots, @Nullable FirebaseFirestoreException e) {
+                if (e != null){
+                    Log.d("Error", e.getMessage());
+                }
+                for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
+                    if (doc.getType() == DocumentChange.Type.ADDED){
+                        CircuitBr circuitBr = doc.getDocument().toObject(CircuitBr.class);
+                        listCB.add(circuitBr);
                     }
-                });
+                }
+
+                for (CircuitBr cb1: listCB){
+                    for (CircuitBr cb2: listCB){
+                        if (cb1.getAmperaje().equals(cb2.getAmperaje())){
+                            if (agregar(cb1.getAmperaje())){
+                                listAdapter.add(cb1);
+                            }
+                        }
+                    }
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private boolean agregar(String valor){
-        for (SAI_UPS saiUps: listAdapter){
-            if (saiUps.getSalida().equals(valor)){
+        for (CircuitBr circuitBr: listAdapter){
+            if (circuitBr.getAmperaje().equals(valor)){
                 return false;
             }
         }

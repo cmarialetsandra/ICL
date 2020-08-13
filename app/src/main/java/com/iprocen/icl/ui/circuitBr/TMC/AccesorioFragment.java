@@ -1,4 +1,4 @@
-package com.iprocen.icl.ui.SAI_UPS;
+package com.iprocen.icl.ui.circuitBr.TMC;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -19,22 +19,22 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.iprocen.icl.R;
+import com.iprocen.icl.ui.circuitBr.CircuitBr;
 
 import java.util.ArrayList;
 
-public class AC1kVAFragment extends Fragment {
+public class AccesorioFragment extends Fragment {
 
     private FirebaseFirestore mFirestore;
 
     private TextView txt_preg;
     private RecyclerView recyclerView;
 
-    private ArrayList<SAI_UPS> listSAI = new ArrayList<>();
-    private ArrayList<SAI_UPS> listAdapter = new ArrayList<>();
-    private UPSAdapterPregUno adapter;
+    private ArrayList<CircuitBr> listCB = new ArrayList<>();
+    private ArrayList<CircuitBr> listAdapter = new ArrayList<>();
+    private AdapterAccesorio adapter;
 
-    private int aliment = 2;
-    private String alm_energia = "No";
+    private int tipo = 4;
 
     @Nullable
     @Override
@@ -42,14 +42,14 @@ public class AC1kVAFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_opc, container, false);
 
         txt_preg = (TextView) view.findViewById(R.id.txt_preg);
-        txt_preg.setText(R.string.pg4ups);
+        txt_preg.setText(R.string.pg8cb);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mFirestore = FirebaseFirestore.getInstance();
 
-        adapter = new UPSAdapterPregUno(listAdapter);
+        adapter = new AdapterAccesorio(listAdapter);
         recyclerView.setAdapter(adapter);
 
         return view;
@@ -63,7 +63,7 @@ public class AC1kVAFragment extends Fragment {
     }
 
     private void listarDatos(){
-        mFirestore.collection("SAI_UPS").whereEqualTo("aliment", aliment).whereEqualTo("alm_energia", alm_energia)
+        mFirestore.collection("CircuitBr").whereEqualTo("tipo", tipo)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
 
             @Override
@@ -73,16 +73,16 @@ public class AC1kVAFragment extends Fragment {
                 }
                 for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
                     if (doc.getType() == DocumentChange.Type.ADDED){
-                        SAI_UPS saiUps = doc.getDocument().toObject(SAI_UPS.class);
-                        listSAI.add(saiUps);
+                        CircuitBr circuitBr = doc.getDocument().toObject(CircuitBr.class);
+                        listCB.add(circuitBr);
                     }
                 }
 
-                for (SAI_UPS s1: listSAI){
-                    for (SAI_UPS s2: listSAI){
-                        if (s1.getEntrada().equals(s2.getEntrada())){
-                            if (agregar(s1.getEntrada())){
-                                listAdapter.add(s1);
+                for (CircuitBr cb1: listCB){
+                    for (CircuitBr cb2: listCB){
+                        if (cb1.getAccesorio().equals(cb2.getAccesorio())){
+                            if (agregar(cb1.getAccesorio())){
+                                listAdapter.add(cb1);
                             }
                         }
                     }
@@ -94,8 +94,8 @@ public class AC1kVAFragment extends Fragment {
     }
 
     private boolean agregar(String valor){
-        for (SAI_UPS saiUps: listAdapter){
-            if (saiUps.getEntrada().equals(valor)){
+        for (CircuitBr circuitBr: listAdapter){
+            if (circuitBr.getAccesorio().equals(valor)){
                 return false;
             }
         }

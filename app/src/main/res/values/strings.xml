@@ -10,9 +10,9 @@
     <string name="menu_1ac">Alimentación AC-1kVA</string>
     <string name="menu_2ac">Alimentación AC-500 VA</string>
     <string name="menu_protec">Protección contra Sobretensiones</string>
+    <string name="menu_circuit">Circuit Breakers</string>
 
     <string name="menu_acondi">Acondicionadores de Señal</string>
-
 
 
     <string name="alimentacion">Alimentación Confiable</string>
@@ -29,10 +29,10 @@
     <string name="corriente">Corriente Nominal</string>
 
     <!-- ALIMENTACION UPS -->
-    <string name="pg1dc">¿Cuál es el voltaje de entrada/salida?</string>
-    <string name="pg2dc">¿Qué salida de potencia/corriente?</string>
-    <string name="pg3dc">¿Qué tipo de dispositivo de almacenamiento de energía?</string>
-    <string name="pg1ac">¿Cuál es el voltaje de entrada?</string>
+    <string name="pg1ups">¿Requiere protocolo de comunicación?</string>
+    <string name="pg2ups">¿Qué salida de potencia/corriente?</string>
+    <string name="pg3ups">¿Qué tipo de dispositivo de almacenamiento de energía?</string>
+    <string name="pg4ups">¿Cuál es el voltaje de entrada?</string>
 
     <!-- PROTECCIÓN CONTRA SOBRETENSIONES -->
     <string name="pg1ps">¿Qué tipo de señal necesitas proteger?</string>
@@ -42,6 +42,20 @@
     <string name="pg5ps">¿Qué diseño: enchufable o no-enchufable?</string>
     <string name="pg6ps">¿Con o sin monitoreo de estado?</string>
 
+    <!-- CIRCUIT BREAKERS -->
+    <string name="pg1cb">¿Necesita Circuit Breakers TMC o Electrónicos?</string>
+    <string name="pg2cb">¿Lo requiere monocanal o multicanal?</string>
+    <string name="pg3cb">¿Cuántos canales necesita?</string>
+    <string name="pg4cb">¿Requiere protección UL 489 o UL 1077?</string>
+    <string name="pg5cb">¿Cuántos polos se requieren?</string>
+    <string name="pg6cb">¿Qué curva característica se requiere?</string>
+    <string name="pg7cb">¿Qué amperaje se requiere?</string>
+    <string name="pg8cb">¿Necesita accesorios para tener más funcionalidades?</string>
+    <string name="pg9cb">¿Qué función necesita?</string>
+    <string name="tmc">TMC</string>
+    <string name="electro">Electrónicos</string>
+    <string name="monocanal">Monocanal</string>
+    <string name="multicanal">Multicanal</string>
 
     <!-- ACONDICIONADORES DE SEÑAL -->
     <string name="pg1as">¿Qué tipo de conversión y/o aislamiento necesita?</string>

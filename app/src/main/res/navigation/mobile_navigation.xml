@@ -42,6 +42,12 @@
         tools:layout="@layout/fragment_opc"/>
 
     <fragment
+        android:id="@+id/nav_circuit"
+        android:name="com.iprocen.icl.ui.circuitBr.CircuitBrFragment"
+        android:label="@string/menu_circuit"
+        tools:layout="@layout/fragment_opc_2boton"/>
+
+    <fragment
         android:id="@+id/nav_acondi"
         android:name="com.iprocen.icl.ui.acondiSe.AcondiSeFragment"
         android:label="@string/menu_acondi"
