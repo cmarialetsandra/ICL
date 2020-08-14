@@ -11,6 +11,7 @@
     <string name="menu_2ac">Alimentación AC-500 VA</string>
     <string name="menu_protec">Protección contra Sobretensiones</string>
     <string name="menu_circuit">Circuit Breakers</string>
+    <string name="menu_borneras">Borneras</string>
 
     <string name="menu_acondi">Acondicionadores de Señal</string>
 
@@ -56,6 +57,20 @@
     <string name="electro">Electrónicos</string>
     <string name="monocanal">Monocanal</string>
     <string name="multicanal">Multicanal</string>
+
+    <!-- BORNERAS -->
+    <string name="pg1bo">¿Qué tipo de conexión se adapta mejor a su aplicación?</string>
+    <string name="pg2bo">¿Qué tamaño de cable estás usando?</string>
+    <string name="pg3bo">¿Cuál es al amperaje necesario?</string>
+    <string name="pg4bo">¿Cuántos puntos de conexión?</string>
+    <string name="tapa_recom">Tapa final recomendada</string>
+    <string name="puente_recom">Puente (2-posiciones) para unir terminales recomendado</string>
+    <string name="acce_recom">Accesorios recomendados</string>
+    <string name="destornillador">Destornillador</string>
+    <string name="etiquetado">Etiquetado</string>
+    <string name="lado">Lado</string>
+    <string name="superior">Superior</string>
+
 
     <!-- ACONDICIONADORES DE SEÑAL -->
     <string name="pg1as">¿Qué tipo de conversión y/o aislamiento necesita?</string>
