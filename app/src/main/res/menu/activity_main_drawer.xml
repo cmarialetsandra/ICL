@@ -52,6 +52,14 @@
                     android:icon="@drawable/ic_arrow"
                     android:title="@string/menu_borneras" />
                 <item
+                    android:id="@+id/nav_reles"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_reles" />
+                <item
+                    android:id="@+id/nav_reles_g"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_reles_g" />
+                <item
                     android:id="@+id/nav_acondi"
                     android:icon="@drawable/ic_arrow"
                     android:title="@string/menu_acondi" />

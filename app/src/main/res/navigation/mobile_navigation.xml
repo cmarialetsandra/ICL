@@ -7,55 +7,67 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.iprocen.icl.ui.home.HomeFragment"
+        android:name="com.iprocen.icl.seccion.home.HomeFragment"
         android:label="@string/menu_inicio"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_fuentes"
-        android:name="com.iprocen.icl.ui.fuentesAl.FuentesAlFragment"
+        android:name="com.iprocen.icl.seccion.fuentesAl.FuentesAlFragment"
         android:label="@string/menu_fuentes"
         tools:layout="@layout/fragment_opc"/>
 
     <fragment
         android:id="@+id/nav_dc"
-        android:name="com.iprocen.icl.ui.SAI_UPS.DCFragment"
+        android:name="com.iprocen.icl.seccion.SAI_UPS.DCFragment"
         android:label="@string/menu_dc"
         tools:layout="@layout/fragment_opc"/>
 
     <fragment
         android:id="@+id/nav_1ac"
-        android:name="com.iprocen.icl.ui.SAI_UPS.AC1kVAFragment"
+        android:name="com.iprocen.icl.seccion.SAI_UPS.AC1kVAFragment"
         android:label="@string/menu_1ac"
         tools:layout="@layout/fragment_opc"/>
 
     <fragment
         android:id="@+id/nav_2ac"
-        android:name="com.iprocen.icl.ui.SAI_UPS.AC500VAFragment"
+        android:name="com.iprocen.icl.seccion.SAI_UPS.AC500VAFragment"
         android:label="@string/menu_2ac"
         tools:layout="@layout/fragment_opc"/>
 
     <fragment
         android:id="@+id/nav_protec"
-        android:name="com.iprocen.icl.ui.protecSobre.ProtecSobreFragment"
+        android:name="com.iprocen.icl.seccion.protecSobre.ProtecSobreFragment"
         android:label="@string/menu_protec"
         tools:layout="@layout/fragment_opc"/>
 
     <fragment
         android:id="@+id/nav_circuit"
-        android:name="com.iprocen.icl.ui.circuitBr.CircuitBrFragment"
+        android:name="com.iprocen.icl.seccion.circuitBr.CircuitBrFragment"
         android:label="@string/menu_circuit"
         tools:layout="@layout/fragment_opc_2boton"/>
 
     <fragment
         android:id="@+id/nav_bornera"
-        android:name="com.iprocen.icl.ui.borneras.BorneraFragment"
+        android:name="com.iprocen.icl.seccion.borneras.BorneraFragment"
         android:label="@string/menu_borneras"
         tools:layout="@layout/fragment_opc"/>
 
     <fragment
+        android:id="@+id/nav_reles"
+        android:name="com.iprocen.icl.seccion.reles.ReleFragment"
+        android:label="@string/menu_reles"
+        tools:layout="@layout/fragment_opc"/>
+
+    <fragment
+        android:id="@+id/nav_reles_g"
+        android:name="com.iprocen.icl.seccion.reles.ReleGeneralFragment"
+        android:label="@string/menu_reles_g"
+        tools:layout="@layout/fragment_opc"/>
+
+    <fragment
         android:id="@+id/nav_acondi"
-        android:name="com.iprocen.icl.ui.acondiSe.AcondiSeFragment"
+        android:name="com.iprocen.icl.seccion.acondiSe.AcondiSeFragment"
         android:label="@string/menu_acondi"
         tools:layout="@layout/fragment_opc"/>
 

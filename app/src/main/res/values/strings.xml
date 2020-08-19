@@ -12,6 +12,8 @@
     <string name="menu_protec">Protección contra Sobretensiones</string>
     <string name="menu_circuit">Circuit Breakers</string>
     <string name="menu_borneras">Borneras</string>
+    <string name="menu_reles">Relés</string>
+    <string name="menu_reles_g">Relés de uso general</string>
 
     <string name="menu_acondi">Acondicionadores de Señal</string>
 
@@ -71,6 +73,13 @@
     <string name="lado">Lado</string>
     <string name="superior">Superior</string>
 
+    <!-- RELÉS -->
+    <string name="pg1re">¿Qué tipo de relé necesita?</string>
+    <string name="pg2re">¿Cuál es el tipo de voltaje de la bobina de entrada: DC o AC?</string>
+    <string name="pg3re">¿Cuál es su corriente de salida (amperios)?</string>
+    <string name="pg4re">¿Qué tipo de contactos necesita: SPDT, DPDT, etc?</string>
+    <string name="pg5re">¿Qué tecnología de conexión: Tornillo (UT) o Push-in (PT)?</string>
+
 
     <!-- ACONDICIONADORES DE SEÑAL -->
     <string name="pg1as">¿Qué tipo de conversión y/o aislamiento necesita?</string>
@@ -81,5 +90,6 @@
     <string name="result">Resultado</string>
     <string name="desc">Descripción</string>
     <string name="nmro_parte">Número de parte resultante de Phoenix Contact</string>
+    <string name="pieza_repuesto">Piezas de repuesto</string>
 
 </resources>
