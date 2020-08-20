@@ -72,6 +72,18 @@
         tools:layout="@layout/fragment_opc"/>
 
     <fragment
+        android:id="@+id/nav_conector"
+        android:name="com.iprocen.icl.seccion.conectores.ConectorFragment"
+        android:label="@string/menu_conector"
+        tools:layout="@layout/fragment_opc"/>
+
+    <fragment
+        android:id="@+id/nav_cables"
+        android:name="com.iprocen.icl.seccion.cablePre.CablePreFragment"
+        android:label="@string/menu_cables"
+        tools:layout="@layout/fragment_opc"/>
+
+    <fragment
         android:id="@+id/nav_agregar"
         android:name="com.iprocen.icl.Agregar"
         android:label="Agregar"

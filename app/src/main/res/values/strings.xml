@@ -14,9 +14,9 @@
     <string name="menu_borneras">Borneras</string>
     <string name="menu_reles">Relés</string>
     <string name="menu_reles_g">Relés de uso general</string>
-
     <string name="menu_acondi">Acondicionadores de Señal</string>
-
+    <string name="menu_conector">Conectores de uso rudo</string>
+    <string name="menu_cables">Cables Preensamblados</string>
 
     <string name="alimentacion">Alimentación Confiable</string>
     <string name="conectividad">Conectividad</string>
@@ -80,16 +80,49 @@
     <string name="pg4re">¿Qué tipo de contactos necesita: SPDT, DPDT, etc?</string>
     <string name="pg5re">¿Qué tecnología de conexión: Tornillo (UT) o Push-in (PT)?</string>
 
-
     <!-- ACONDICIONADORES DE SEÑAL -->
     <string name="pg1as">¿Qué tipo de conversión y/o aislamiento necesita?</string>
     <string name="pg2as">¿Cuál es la alimentación del módulo?</string>
     <string name="pg3as">¿Cuál es su señal de entrada?</string>
     <string name="pg4as">¿Cuál es la señal de salida?</string>
 
+    <!-- CONECTORES DE USO RUDO -->
+    <string name="pg1co">¿Lo desea Standard (Metal) o Evo (Plástico)?</string>
+    <string name="pg2co">¿Cuántos polos necesitas?</string>
+    <string name="pg3co">¿Qué tecnología de conexión prefieres?</string>
+    <string name="pg4co">¿Qué tipo de conexión (Macho/Hembra)?</string>
+    <string name="pg5co">Montaje de Panel: ¿con o sin cubierta?</string>
+    <string name="pg6co">Entrada de cables: ¿superior o lateral?</string>
+    <string name="macho">Macho</string>
+    <string name="hembra">Hembra</string>
+    <string name="cubierta_c">Con cubierta</string>
+    <string name="cubierta_s">Sin cubierta</string>
+    <string name="lateral">Lateral</string>
+    <string name="perfil_bajo">Perfil Bajo</string>
+    <string name="perfil_alto">Perfil Alto</string>
+
+    <!-- CABLES PREENSAMBLADOS -->
+    <string name="pg1ca">¿Qué tamaño de rosca necesita en su ser de cables: M8 o M12?</string>
+    <string name="pg2ca">¿Cuántas posiciones (cables) se requieren?</string>
+    <string name="pg3ca">¿Qué tipo de conector: macho o hembra?</string>
+    <string name="pg4ca">¿La orientación del conector es recta o angulada?</string>
+    <string name="pg5ca">¿Cuál es la longitud deseada del set de cables?</string>
+    <string name="pg6ca">¿Chaqueta PUR blindado o no blindado?</string>
+    <string name="pg7ca">¿CMAT blindado o no blindado?</string>
+    <string name="pg8ca">¿Necesita un receptáculo de montaje frontal o posterior de acomplamiento?</string>
+    <string name="blindado">Blindado</string>
+    <string name="no_blindado">No blindado</string>
+    <string name="frontal">Frontal</string>
+    <string name="posterior">Posterior</string>
+    <string name="cmat">CMAT</string>
+    <string name="receptaculo">Receptáculo de montaje</string>
+
+
     <string name="result">Resultado</string>
     <string name="desc">Descripción</string>
     <string name="nmro_parte">Número de parte resultante de Phoenix Contact</string>
     <string name="pieza_repuesto">Piezas de repuesto</string>
+    <string name="base_montaje">Base de montaje en panel</string>
+    <string name="entrada_cables">Entrada de cables</string>
 
 </resources>

@@ -63,6 +63,14 @@
                     android:id="@+id/nav_acondi"
                     android:icon="@drawable/ic_arrow"
                     android:title="@string/menu_acondi" />
+                <item
+                    android:id="@+id/nav_conector"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_conector" />
+                <item
+                    android:id="@+id/nav_cables"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_cables" />
             </group>
         </menu>
     </item>
