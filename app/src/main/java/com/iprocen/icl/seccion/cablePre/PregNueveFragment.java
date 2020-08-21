@@ -76,7 +76,7 @@ public class PregNueveFragment extends Fragment {
 
     private void listarDatos(){
         mFirestore.collection("CablePre").whereEqualTo("tamanio", tamanio).whereEqualTo("posicion", posicion)
-                .whereEqualTo("tipo", tipo).whereEqualTo("orientacion", orientacion)
+                .whereEqualTo("tipo", tipo).whereEqualTo("orientacion", orientacion).whereEqualTo("longitud", longitud)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
 
             @Override
