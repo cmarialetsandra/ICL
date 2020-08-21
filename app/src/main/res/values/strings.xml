@@ -17,9 +17,11 @@
     <string name="menu_acondi">Acondicionadores de Señal</string>
     <string name="menu_conector">Conectores de uso rudo</string>
     <string name="menu_cables">Cables Preensamblados</string>
+    <string name="menu_switches">Switches Ethernet</string>
 
     <string name="alimentacion">Alimentación Confiable</string>
     <string name="conectividad">Conectividad</string>
+    <string name="redes">Redes y conectividad remota</string>
 
     <!-- FUENTES DE ALIMENTACION -->
     <string name="pg1fa">¿Necesita una fuente de alimentación monofásica o trifásica?</string>
@@ -116,6 +118,16 @@
     <string name="posterior">Posterior</string>
     <string name="cmat">CMAT</string>
     <string name="receptaculo">Receptáculo de montaje</string>
+
+    <!-- SWITCHES ETHERNET -->
+    <string name="pg1se">¿Cuántos puertos de cobre se requieren?</string>
+    <string name="pg2se">¿Existe requerimiento de puertos especiales: POE y/o fibra óptica?</string>
+    <string name="pg3se">¿Cuál es el número total de puertos requeridos?</string>
+    <string name="pg4se">¿Qué velocidad se requiere en la red?</string>
+    <string name="pg5se">¿Se requiere alimentación dual y contactos de alarma?</string>
+    <string name="pg6se">¿La instalación está en un lugar peligroso?</string>
+    <string name="condicion_extrema">Es para condiciones ambientales extremas presentes</string>
+    <string name="no_condicion_extrema">No es para condiciones ambientales extremas presentes</string>
 
 
     <string name="result">Resultado</string>

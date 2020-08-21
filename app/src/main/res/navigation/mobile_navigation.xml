@@ -84,6 +84,12 @@
         tools:layout="@layout/fragment_opc"/>
 
     <fragment
+        android:id="@+id/nav_switches"
+        android:name="com.iprocen.icl.seccion.switchesEt.SwitcheEtFragment"
+        android:label="@string/menu_switches"
+        tools:layout="@layout/fragment_opc"/>
+
+    <fragment
         android:id="@+id/nav_agregar"
         android:name="com.iprocen.icl.Agregar"
         android:label="Agregar"

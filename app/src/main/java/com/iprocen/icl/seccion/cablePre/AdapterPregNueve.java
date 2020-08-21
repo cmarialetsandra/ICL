@@ -46,7 +46,7 @@ public class AdapterPregNueve extends RecyclerView.Adapter<AdapterPregNueve.View
         if (cmat == 1){
             holder.txtCmat.setText(opc.getCmat_s());
         }else if (cmat == 2){
-            holder.txtCmat.setText(opc.getChaqueta_n());
+            holder.txtCmat.setText(opc.getCmat_n());
         }
 
         if (montaje == 1){

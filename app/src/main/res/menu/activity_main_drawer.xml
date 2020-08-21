@@ -75,4 +75,15 @@
         </menu>
     </item>
 
+    <item android:title="@string/redes">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_switches"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_switches" />
+            </group>
+        </menu>
+    </item>
+
 </menu>
