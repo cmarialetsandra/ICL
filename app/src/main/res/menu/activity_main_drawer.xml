@@ -82,6 +82,14 @@
                     android:id="@+id/nav_switches"
                     android:icon="@drawable/ic_arrow"
                     android:title="@string/menu_switches" />
+                <item
+                    android:id="@+id/nav_poe"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_poe" />
+                <item
+                    android:id="@+id/nav_switches_admi"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_switches_admi" />
             </group>
         </menu>
     </item>

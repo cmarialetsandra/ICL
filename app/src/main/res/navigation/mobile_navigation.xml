@@ -90,6 +90,18 @@
         tools:layout="@layout/fragment_opc"/>
 
     <fragment
+        android:id="@+id/nav_poe"
+        android:name="com.iprocen.icl.seccion.poeTec.PoeTecFragment"
+        android:label="@string/menu_poe"
+        tools:layout="@layout/fragment_opc"/>
+
+    <fragment
+        android:id="@+id/nav_switches_admi"
+        android:name="com.iprocen.icl.seccion.switchesAd.SwitchesAdFragment"
+        android:label="@string/menu_switches_admi"
+        tools:layout="@layout/fragment_opc"/>
+
+    <fragment
         android:id="@+id/nav_agregar"
         android:name="com.iprocen.icl.Agregar"
         android:label="Agregar"

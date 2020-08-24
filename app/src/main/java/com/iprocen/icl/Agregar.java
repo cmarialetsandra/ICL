@@ -46,10 +46,10 @@ public class Agregar extends Fragment {
     }
 
     private void agregar(){
-        Map<String, Object> sw1 = new HashMap<>();
-        sw1.put("id", 2);
-        sw1.put("desc", "");
-        sw1.put("nmro_parte", "");
-        mFirestore.collection("").document("2").set(sw1);
+        Map<String, Object> poe1 = new HashMap<>();
+        poe1.put("id", 2);
+        poe1.put("desc", "");
+        poe1.put("nmro_parte", "");
+        mFirestore.collection("").document("2").set(poe1);
     }
 }

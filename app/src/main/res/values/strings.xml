@@ -18,6 +18,8 @@
     <string name="menu_conector">Conectores de uso rudo</string>
     <string name="menu_cables">Cables Preensamblados</string>
     <string name="menu_switches">Switches Ethernet</string>
+    <string name="menu_poe">PoE y tecnología de instalación</string>
+    <string name="menu_switches_admi">Switches Administrable</string>
 
     <string name="alimentacion">Alimentación Confiable</string>
     <string name="conectividad">Conectividad</string>
@@ -129,6 +131,32 @@
     <string name="condicion_extrema">Es para condiciones ambientales extremas presentes</string>
     <string name="no_condicion_extrema">No es para condiciones ambientales extremas presentes</string>
 
+    <!-- POE Y TECNOLOGÍA DE INSTALACIÓN -->
+    <string name="pg1poe">¿Qué POE necesita?</string>
+    <string name="pg2poe">¿Cuántos puertos de cobre se requieren?</string>
+    <string name="pg3poe">Existe requerimiento de puertos especiales: POE y/o fibra óptica?</string>
+    <string name="pg4poe">¿Cuál es el número total de puertos requeridos?</string>
+    <string name="pg5poe">¿Qué velocidad se requiere en la red?</string>
+    <string name="pg6poe">¿Se requiere alimentación dual y contactos de alarma?</string>
+    <string name="pg7poe">¿La instalación está en un lugar peligroso?</string>
+    <string name="pg8poe">¿Qué método de conexión tiene?</string>
+    <string name="pg9poe">¿Cuál es el rango de temperatura?</string>
+    <string name="pg10poe">¿Cuál es la potencia máxima permitida?</string>
+    <string name="pg11poe">¿Tiene alguna característica especial?</string>
+    <string name="pg12poe">¿Qué estándares POE cumple?</string>
+    <string name="pg13poe">¿Qué tipo de patch panel es este?</string>
+    <string name="pg14poe">¿Cómo está blindado?</string>
+    <string name="pg15poe">¿Cómo se conecta el blindado?</string>
+    <string name="pg16poe">¿Tiene protección contra sobretensión?</string>
+    <string name="poe">PoE</string>
+    <string name="poe_in">PoE Injector</string>
+    <string name="patch_p">Patch Panels</string>
+
+    <!-- SWITCHES ADMINISTRABLE -->
+    <string name="pg1sa">¿Cuántos puertos de fibra óptica se requieren?</string>
+    <string name="pg2sa">¿Cuál es el número total de puertos combinados?</string>
+    <string name="pg3sa">¿Cuál es la velocidad?</string>
+    <string name="pg4sa">¿Qué características especiales se incluyen?</string>
 
     <string name="result">Resultado</string>
     <string name="desc">Descripción</string>
