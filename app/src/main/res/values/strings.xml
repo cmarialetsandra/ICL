@@ -21,7 +21,7 @@
     <string name="menu_poe">PoE y tecnología de instalación</string>
     <string name="menu_switches_admi">Switches Administrable</string>
     <string name="menu_conecti">Conectividad Remota Segura</string>
-    <string name="menu_axioline">Axioline F para tablero de control</string>
+    <string name="menu_axioline">Axioline F</string>
     <string name="menu_hmis">HMIs</string>
 
     <string name="alimentacion">Alimentación Confiable</string>
@@ -174,9 +174,15 @@
     <string name="pg10crs">¿Puede caer de una conexión por cable a una red celular?</string>
 
     <!-- AXIOLINE F PARA EL TABLERO DE CONTROL -->
-    <string name="pg1ax">¿Necesita acopladores, controladores o modulos de entrada/salida?</string>
+    <string name="pg1ax">¿Necesita acopladores, controladores o módulos de entrada/salida?</string>
     <string name="pg2ax">¿Cuál es el protocolo deseado?</string>
     <string name="pg3ax">¿Lo desea discreto (digital), análogo o especial?</string>
+    <string name="acompladores">Acopladores</string>
+    <string name="controladores">Controladores</string>
+    <string name="modulos_es">Módulos de entrada/salida</string>
+    <string name="discreto">Discreto (digital)</string>
+    <string name="analogo">Análogo</string>
+    <string name="especial">Especial</string>
 
     <!-- HMIs -->
     <string name="pg1hmi">¿Qué tamaño de pantalla necesita?</string>
@@ -192,6 +198,7 @@
     <string name="result">Resultado</string>
     <string name="desc">Descripción</string>
     <string name="nmro_parte">Número de parte resultante de Phoenix Contact</string>
+    <string name="desig">Designación</string>
     <string name="pieza_repuesto">Piezas de repuesto</string>
     <string name="base_montaje">Base de montaje en panel</string>
     <string name="entrada_cables">Entrada de cables</string>

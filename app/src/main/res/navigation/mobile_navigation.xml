@@ -108,6 +108,12 @@
         tools:layout="@layout/fragment_opc"/>
 
     <fragment
+        android:id="@+id/nav_axioline"
+        android:name="com.iprocen.icl.seccion.axioline.AxiolineFragment"
+        android:label="@string/menu_axioline"
+        tools:layout="@layout/fragment_opc"/>
+
+    <fragment
         android:id="@+id/nav_agregar"
         android:name="com.iprocen.icl.Agregar"
         android:label="Agregar"

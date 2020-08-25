@@ -94,6 +94,11 @@
                     android:id="@+id/nav_conecti"
                     android:icon="@drawable/ic_arrow"
                     android:title="@string/menu_conecti" />
+
+                <item
+                    android:id="@+id/nav_axioline"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_axioline" />
             </group>
         </menu>
     </item>
