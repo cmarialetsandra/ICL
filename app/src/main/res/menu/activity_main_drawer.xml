@@ -90,6 +90,10 @@
                     android:id="@+id/nav_switches_admi"
                     android:icon="@drawable/ic_arrow"
                     android:title="@string/menu_switches_admi" />
+                <item
+                    android:id="@+id/nav_conecti"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_conecti" />
             </group>
         </menu>
     </item>

@@ -20,6 +20,9 @@
     <string name="menu_switches">Switches Ethernet</string>
     <string name="menu_poe">PoE y tecnología de instalación</string>
     <string name="menu_switches_admi">Switches Administrable</string>
+    <string name="menu_conecti">Conectividad Remota Segura</string>
+    <string name="menu_axioline">Axioline F para tablero de control</string>
+    <string name="menu_hmis">HMIs</string>
 
     <string name="alimentacion">Alimentación Confiable</string>
     <string name="conectividad">Conectividad</string>
@@ -157,6 +160,34 @@
     <string name="pg2sa">¿Cuál es el número total de puertos combinados?</string>
     <string name="pg3sa">¿Cuál es la velocidad?</string>
     <string name="pg4sa">¿Qué características especiales se incluyen?</string>
+
+    <!-- CONECTIVIDAD REMOTA SEGURA -->
+    <string name="pg1crs">¿Se puede instalar en áreas peligrosas?</string>
+    <string name="pg2crs">¿Cuántos puertos de cobre tiene?</string>
+    <string name="pg3crs">¿Cuál es el rango de temperatura?</string>
+    <string name="pg4crs">¿Compatible con Mguard cloud?</string>
+    <string name="pg5crs">¿Qué tipo de memoria externa tiene?</string>
+    <string name="pg6crs">¿Cuenta con firewall completo?</string>
+    <string name="pg7crs">¿Es capaz de establecer VPN?</string>
+    <string name="pg8crs">¿Cuenta con DMZ?</string>
+    <string name="pg9crs">¿Es capaz de trabajar con celular?</string>
+    <string name="pg10crs">¿Puede caer de una conexión por cable a una red celular?</string>
+
+    <!-- AXIOLINE F PARA EL TABLERO DE CONTROL -->
+    <string name="pg1ax">¿Necesita acopladores, controladores o modulos de entrada/salida?</string>
+    <string name="pg2ax">¿Cuál es el protocolo deseado?</string>
+    <string name="pg3ax">¿Lo desea discreto (digital), análogo o especial?</string>
+
+    <!-- HMIs -->
+    <string name="pg1hmi">¿Qué tamaño de pantalla necesita?</string>
+    <string name="pg2hmi">¿Qué resolución es requerida?</string>
+    <string name="pg3hmi">¿Cuál es el brillo mínimo requerido?</string>
+    <string name="pg4hmi">¿Cuántas horas de operación requiere?</string>
+    <string name="pg5hmi">¿Qué tipo de funcionalidad táctil requiere?</string>
+    <string name="pg6hmi">¿Qué tipo de procesador se necesita?</string>
+    <string name="pg7hmi">¿Qué rango de temperatura se necesita?</string>
+    <string name="pg8hmi">¿Qué nivel de protección se necesita?</string>
+    <string name="pg9hmi">¿Qué tipo de aprobaciones especiales se necesitan?</string>
 
     <string name="result">Resultado</string>
     <string name="desc">Descripción</string>
