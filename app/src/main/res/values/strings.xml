@@ -23,10 +23,12 @@
     <string name="menu_conecti">Conectividad Remota Segura</string>
     <string name="menu_axioline">Axioline F</string>
     <string name="menu_hmis">HMIs</string>
+    <string name="menu_marcaje">Marcaje</string>
 
     <string name="alimentacion">Alimentación Confiable</string>
     <string name="conectividad">Conectividad</string>
     <string name="redes">Redes y conectividad remota</string>
+    <string name="productividad">Productividad en el taller</string>
 
     <!-- FUENTES DE ALIMENTACION -->
     <string name="pg1fa">¿Necesita una fuente de alimentación monofásica o trifásica?</string>
@@ -194,6 +196,17 @@
     <string name="pg7hmi">¿Qué rango de temperatura se necesita?</string>
     <string name="pg8hmi">¿Qué nivel de protección se necesita?</string>
     <string name="pg9hmi">¿Qué tipo de aprobaciones especiales se necesitan?</string>
+
+    <!-- MARCAJE -->
+    <string name="pg1ma">¿Necesita material para marcar o necesita impresora?</string>
+    <string name="pg2ma">¿Qué materiales usa para marcar cables?</string>
+    <string name="pg3ma">¿Qué tamaño de cable está marcando?</string>
+    <string name="pg4ma">¿Cuánta área de impresión necesita?</string>
+    <string name="pg5ma">¿Cuántas marcas o etiquetas quiere por rollo?</string>
+    <string name="pg6ma">¿Qué marcará y con qué material? ¿Tarjeta o rollo?</string>
+    <string name="pg7ma">¿Cuántas etiquetas necesita imprimir? ¿Volumen?</string>
+    <string name="pg8ma">¿Necesita una impresora de escritorio o portátil?</string>
+    <string name="impresora">Impresora</string>
 
     <string name="result">Resultado</string>
     <string name="desc">Descripción</string>
