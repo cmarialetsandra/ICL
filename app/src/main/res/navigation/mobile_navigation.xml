@@ -126,6 +126,12 @@
         tools:layout="@layout/fragment_opc_2boton"/>
 
     <fragment
+        android:id="@+id/nav_instalacion"
+        android:name="com.iprocen.icl.seccion.instalacion.InstalacionFragment"
+        android:label="@string/menu_instalacion"
+        tools:layout="@layout/fragment_opc"/>
+
+    <fragment
         android:id="@+id/nav_agregar"
         android:name="com.iprocen.icl.Agregar"
         android:label="Agregar"

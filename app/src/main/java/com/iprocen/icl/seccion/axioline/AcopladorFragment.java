@@ -84,8 +84,8 @@ public class AcopladorFragment extends Fragment {
 
                 for (Axioline ax1: listAx){
                     for (Axioline ax2: listAx){
-                        if (ax1.getTipo() == ax2.getTipo()){
-                            if (agregar(ax1.getTipo())){
+                        if (ax1.getDesc() .equals(ax2.getDesc())){
+                            if (agregar(ax1.getDesc())){
                                 listAdapter.add(ax1);
                             }
                         }
@@ -97,9 +97,9 @@ public class AcopladorFragment extends Fragment {
         });
     }
 
-    private boolean agregar(int valor){
+    private boolean agregar(String valor){
         for (Axioline axioline: listAdapter){
-            if (axioline.getTipo() == valor){
+            if (axioline.getDesc().equals(valor)){
                 return false;
             }
         }

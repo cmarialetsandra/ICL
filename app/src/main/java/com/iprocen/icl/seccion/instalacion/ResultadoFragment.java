@@ -1,4 +1,4 @@
-package com.iprocen.icl.seccion.axioline;
+package com.iprocen.icl.seccion.instalacion;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -22,16 +22,17 @@ import com.iprocen.icl.R;
 
 import java.util.ArrayList;
 
-public class AxiolineFragment extends Fragment {
+public class ResultadoFragment extends Fragment {
 
     private FirebaseFirestore mFirestore;
 
     private TextView txt_preg;
     private RecyclerView recyclerView;
 
-    private ArrayList<Axioline> listAx = new ArrayList<>();
-    private ArrayList<Axioline> listAdapter = new ArrayList<>();
-    private AdapterPregUno adapter;
+    private ArrayList<Instalacion> listAdapter = new ArrayList<>();
+    private AdapterResultado adapter;
+
+    private String tipo;
 
     @Nullable
     @Override
@@ -39,17 +40,23 @@ public class AxiolineFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_opc, container, false);
 
         txt_preg = (TextView) view.findViewById(R.id.txt_preg);
-        txt_preg.setText(R.string.pg1ax);
+        txt_preg.setText(R.string.result);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mFirestore = FirebaseFirestore.getInstance();
 
-        adapter = new AdapterPregUno(listAdapter);
+        adapter = new AdapterResultado(listAdapter);
         recyclerView.setAdapter(adapter);
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Bundle bundle = getArguments();
+        tipo = bundle.getString("tipo");
     }
 
     @Override
@@ -59,7 +66,7 @@ public class AxiolineFragment extends Fragment {
     }
 
     private void listarDatos(){
-        mFirestore.collection("Axioline")
+        mFirestore.collection("Instalacion").whereEqualTo("tipo", tipo)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
 
             @Override
@@ -69,18 +76,8 @@ public class AxiolineFragment extends Fragment {
                 }
                 for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
                     if (doc.getType() == DocumentChange.Type.ADDED){
-                        Axioline axioline = doc.getDocument().toObject(Axioline.class);
-                        listAx.add(axioline);
-                    }
-                }
-
-                for (Axioline ax1: listAx){
-                    for (Axioline ax2: listAx){
-                        if (ax1.getTipo() == ax2.getTipo()){
-                            if (agregar(ax1.getTipo())){
-                                listAdapter.add(ax1);
-                            }
-                        }
+                        Instalacion instalacion = doc.getDocument().toObject(Instalacion.class);
+                        listAdapter.add(instalacion);
                     }
                 }
 
@@ -89,17 +86,4 @@ public class AxiolineFragment extends Fragment {
         });
     }
 
-    private boolean agregar(int valor){
-        if (valor == 4 || valor == 5){
-            return false;
-        }else{
-            for (Axioline axioline: listAdapter){
-                if (axioline.getTipo() == valor){
-                    return false;
-                }
-            }
-        }
-
-        return true;
-    }
 }

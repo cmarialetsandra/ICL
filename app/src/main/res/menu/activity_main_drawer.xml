@@ -115,6 +115,10 @@
                     android:id="@+id/nav_marcaje"
                     android:icon="@drawable/ic_arrow"
                     android:title="@string/menu_marcaje" />
+                <item
+                    android:id="@+id/nav_instalacion"
+                    android:icon="@drawable/ic_arrow"
+                    android:title="@string/menu_instalacion" />
             </group>
         </menu>
     </item>

@@ -24,6 +24,7 @@
     <string name="menu_axioline">Axioline F</string>
     <string name="menu_hmis">HMIs</string>
     <string name="menu_marcaje">Marcaje</string>
+    <string name="menu_instalacion">Instalación</string>
 
     <string name="alimentacion">Alimentación Confiable</string>
     <string name="conectividad">Conectividad</string>
@@ -207,6 +208,17 @@
     <string name="pg7ma">¿Cuántas etiquetas necesita imprimir? ¿Volumen?</string>
     <string name="pg8ma">¿Necesita una impresora de escritorio o portátil?</string>
     <string name="impresora">Impresora</string>
+
+    <!-- INSTALACIÓN -->
+    <string name="pg1ins">¿Qué necesita?</string>
+    <string name="funcion">Función</string>
+    <string name="tamanio_cond">Tamaño del Conductor</string>
+    <string name="tipo_aislamiento">Tipo de Aislamiento</string>
+    <string name="forma_ponchado">Forma de Ponchado</string>
+    <string name="awg">AWG</string>
+    <string name="color">Color</string>
+    <string name="empaque_estandar">Empaque Estándar</string>
+    <string name="herramienta">Herramienta</string>
 
     <string name="result">Resultado</string>
     <string name="desc">Descripción</string>

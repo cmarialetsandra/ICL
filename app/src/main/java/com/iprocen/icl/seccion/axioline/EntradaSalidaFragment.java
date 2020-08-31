@@ -78,6 +78,7 @@ public class EntradaSalidaFragment extends Fragment {
                     for (Axioline ax2: listAx){
                         if (ax1.getTipo() == ax2.getTipo()){
                             if (agregar(ax1.getTipo())){
+                                Log.e("tipo agregado: ", ""+ax1.getTipo());
                                 listAdapter.add(ax1);
                             }
                         }
@@ -90,11 +91,16 @@ public class EntradaSalidaFragment extends Fragment {
     }
 
     private boolean agregar(int valor){
-        for (Axioline axioline: listAdapter){
-            if (axioline.getTipo() == valor){
-                return false;
+        if (valor == 1 || valor == 2){
+            return false;
+        }else{
+            for (Axioline axioline: listAdapter){
+                if (axioline.getTipo() == valor){
+                    return false;
+                }
             }
         }
+
         return true;
     }
 }
