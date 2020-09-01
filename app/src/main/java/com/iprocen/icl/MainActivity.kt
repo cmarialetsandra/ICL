@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_protec, R.id.nav_circuit, R.id.nav_bornera, R.id.nav_reles, R.id.nav_reles_g,
                 R.id.nav_acondi, R.id.nav_conector, R.id.nav_cables, R.id.nav_switches, R.id.nav_poe,
                 R.id.nav_switches_admi, R.id.nav_conecti, R.id.nav_axioline, R.id.nav_hmis, R.id.nav_marcaje,
-                R.id.nav_instalacion, R.id.nav_agregar
+                R.id.nav_instalacion
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

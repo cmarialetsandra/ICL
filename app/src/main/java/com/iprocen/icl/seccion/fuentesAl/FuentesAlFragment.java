@@ -62,8 +62,6 @@ public class FuentesAlFragment extends Fragment {
 
     private void listarDatos(){
         mFirestore.collection("FuentesAl").addSnapshotListener(new EventListener<QuerySnapshot>() {
-
-
             @Override
             public void onEvent(@Nullable QuerySnapshot documentSnapshots, @Nullable FirebaseFirestoreException e) {
                if (e != null){

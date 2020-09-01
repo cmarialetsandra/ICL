@@ -8,9 +8,6 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
             android:title="@string/menu_inicio" />
-        <item
-            android:id="@+id/nav_agregar"
-            android:title="Agregar" />
     </group>
 
     <item android:title="@string/alimentacion">
