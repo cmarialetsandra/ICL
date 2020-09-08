@@ -1,98 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp">
 
-    <TextView
-        android:id="@+id/lbl_columna1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/primary_text"
-        android:textStyle="bold"
-        android:padding="6dp"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="6dp">
 
-    <TextView
-        android:id="@+id/txt_columna1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/primary_text"
-        android:padding="6dp"/>
+        <TextView
+            android:id="@+id/lbl_columna1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:padding="6dp"/>
 
-    <TextView
-        android:id="@+id/lbl_columna2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/primary_text"
-        android:textStyle="bold"
-        android:padding="6dp"/>
+        <TextView
+            android:id="@+id/txt_columna1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/primary_text"
+            android:padding="6dp"/>
 
-    <TextView
-        android:id="@+id/txt_columna2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/primary_text"
-        android:padding="6dp"/>
+        <TextView
+            android:id="@+id/lbl_columna2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:padding="6dp"/>
 
-    <TextView
-        android:id="@+id/lbl_columna3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/primary_text"
-        android:textStyle="bold"
-        android:padding="6dp"/>
+        <TextView
+            android:id="@+id/txt_columna2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/primary_text"
+            android:padding="6dp"/>
 
-    <TextView
-        android:id="@+id/txt_columna3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/primary_text"
-        android:padding="6dp"/>
+        <TextView
+            android:id="@+id/lbl_columna3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:padding="6dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/primary_text"
-        android:textStyle="bold"
-        android:padding="6dp"
-        android:text="@string/desc"/>
+        <TextView
+            android:id="@+id/txt_columna3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/primary_text"
+            android:padding="6dp"/>
 
-    <TextView
-        android:id="@+id/txt_desc1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/primary_text"
-        android:padding="6dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:padding="6dp"
+            android:text="@string/desc"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/primary_text"
-        android:textStyle="bold"
-        android:padding="6dp"
-        android:text="@string/nmro_parte"/>
+        <TextView
+            android:id="@+id/txt_desc1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/primary_text"
+            android:padding="6dp"/>
 
-    <TextView
-        android:id="@+id/txt_nmro1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/primary_text"
-        android:padding="6dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:padding="6dp"
+            android:text="@string/nmro_parte"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="5px"
-        android:background="@android:color/darker_gray"/>
+        <TextView
+            android:id="@+id/txt_nmro1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/primary_text"
+            android:padding="6dp"/>
 
-</LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
